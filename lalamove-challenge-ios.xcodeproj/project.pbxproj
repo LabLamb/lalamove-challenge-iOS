@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7AD2BBF19F7142EBDE3B9E11 /* libPods-lalamove-challenge-iosUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */; };
+		B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */; };
+		D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D07249A61E1008F0C44 /* AppDelegate.swift */; };
+		D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */; };
+		D24A6D0C249A61E1008F0C44 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */; };
+		D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D10249A61E2008F0C44 /* Assets.xcassets */; };
+		D24A6D14249A61E2008F0C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */; };
+		D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */; };
+		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
+		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D24A6D1B249A61E2008F0C44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D24A6CFC249A61E1008F0C44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D24A6D03249A61E1008F0C44;
+			remoteInfo = "lalamove-challenge-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0148EFE6B5E08A07070A54D7 /* Pods-lalamove-challenge-iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-iosUITests.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-iosUITests/Pods-lalamove-challenge-iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.release.xcconfig"; sourceTree = "<group>"; };
+		56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-iosUITests/Pods-lalamove-challenge-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lalamove-challenge-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24A6D07249A61E1008F0C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeliveryMasterViewController.swift; path = ../DeliveryMasterViewController.swift; sourceTree = "<group>"; };
+		D24A6D10249A61E2008F0C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D24A6D13249A61E2008F0C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D24A6D15249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lalamove-challenge-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lalamove_challenge_iosUITests.swift; sourceTree = "<group>"; };
+		D24A6D20249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
+		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
+		DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-iosUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D24A6D01249A61E1008F0C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24A6D17249A61E2008F0C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AD2BBF19F7142EBDE3B9E11 /* libPods-lalamove-challenge-iosUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		548C880990F634509CCB5799 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */,
+				41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */,
+				86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */,
+				0148EFE6B5E08A07070A54D7 /* Pods-lalamove-challenge-iosUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9F9943AB5984C4D29246A1CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */,
+				DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D24A6CFB249A61E1008F0C44 = {
+			isa = PBXGroup;
+			children = (
+				D24A6D06249A61E1008F0C44 /* lalamove-challenge-ios */,
+				D24A6D1D249A61E2008F0C44 /* lalamove-challenge-iosUITests */,
+				D24A6D05249A61E1008F0C44 /* Products */,
+				548C880990F634509CCB5799 /* Pods */,
+				9F9943AB5984C4D29246A1CE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D24A6D05249A61E1008F0C44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */,
+				D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D24A6D06249A61E1008F0C44 /* lalamove-challenge-ios */ = {
+			isa = PBXGroup;
+			children = (
+				D24A6D07249A61E1008F0C44 /* AppDelegate.swift */,
+				D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */,
+				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
+				D24A6D10249A61E2008F0C44 /* Assets.xcassets */,
+				D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */,
+				D24A6D15249A61E2008F0C44 /* Info.plist */,
+			);
+			path = "lalamove-challenge-ios";
+			sourceTree = "<group>";
+		};
+		D24A6D1D249A61E2008F0C44 /* lalamove-challenge-iosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */,
+				D24A6D20249A61E2008F0C44 /* Info.plist */,
+			);
+			path = "lalamove-challenge-iosUITests";
+			sourceTree = "<group>";
+		};
+		D288F2FA249A6295003EAAA3 /* DeliveryMaster */ = {
+			isa = PBXGroup;
+			children = (
+				D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */,
+				D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */,
+				D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */,
+			);
+			path = DeliveryMaster;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D24A6D23249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-ios" */;
+			buildPhases = (
+				CAD31D5F061EB996B27A06B7 /* [CP] Check Pods Manifest.lock */,
+				D24A6D00249A61E1008F0C44 /* Sources */,
+				D24A6D01249A61E1008F0C44 /* Frameworks */,
+				D24A6D02249A61E1008F0C44 /* Resources */,
+				08D9FAF3CD84C7DE6B1F2328 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "lalamove-challenge-ios";
+			productName = "lalamove-challenge-ios";
+			productReference = D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D24A6D19249A61E2008F0C44 /* lalamove-challenge-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D24A6D26249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-iosUITests" */;
+			buildPhases = (
+				F9761435011737EDC61C1D25 /* [CP] Check Pods Manifest.lock */,
+				D24A6D16249A61E2008F0C44 /* Sources */,
+				D24A6D17249A61E2008F0C44 /* Frameworks */,
+				D24A6D18249A61E2008F0C44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D24A6D1C249A61E2008F0C44 /* PBXTargetDependency */,
+			);
+			name = "lalamove-challenge-iosUITests";
+			productName = "lalamove-challenge-iosUITests";
+			productReference = D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D24A6CFC249A61E1008F0C44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = LabLamb;
+				TargetAttributes = {
+					D24A6D03249A61E1008F0C44 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					D24A6D19249A61E2008F0C44 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = D24A6D03249A61E1008F0C44;
+					};
+				};
+			};
+			buildConfigurationList = D24A6CFF249A61E1008F0C44 /* Build configuration list for PBXProject "lalamove-challenge-ios" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D24A6CFB249A61E1008F0C44;
+			productRefGroup = D24A6D05249A61E1008F0C44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */,
+				D24A6D19249A61E2008F0C44 /* lalamove-challenge-iosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D24A6D02249A61E1008F0C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24A6D14249A61E2008F0C44 /* LaunchScreen.storyboard in Resources */,
+				D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24A6D18249A61E2008F0C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08D9FAF3CD84C7DE6B1F2328 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAD31D5F061EB996B27A06B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lalamove-challenge-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9761435011737EDC61C1D25 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lalamove-challenge-iosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D24A6D00249A61E1008F0C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
+				D24A6D0C249A61E1008F0C44 /* DeliveryMasterViewController.swift in Sources */,
+				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,
+				D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */,
+				D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D24A6D16249A61E2008F0C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D24A6D1C249A61E2008F0C44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */;
+			targetProxy = D24A6D1B249A61E2008F0C44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D24A6D13249A61E2008F0C44 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D24A6D21249A61E2008F0C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D24A6D22249A61E2008F0C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D24A6D24249A61E2008F0C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "lalamove-challenge-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D24A6D25249A61E2008F0C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "lalamove-challenge-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D24A6D27249A61E2008F0C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "lalamove-challenge-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "lalamove-challenge-ios";
+			};
+			name = Debug;
+		};
+		D24A6D28249A61E2008F0C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0148EFE6B5E08A07070A54D7 /* Pods-lalamove-challenge-iosUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "lalamove-challenge-iosUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "lalamove-challenge-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D24A6CFF249A61E1008F0C44 /* Build configuration list for PBXProject "lalamove-challenge-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24A6D21249A61E2008F0C44 /* Debug */,
+				D24A6D22249A61E2008F0C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D24A6D23249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24A6D24249A61E2008F0C44 /* Debug */,
+				D24A6D25249A61E2008F0C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D24A6D26249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D24A6D27249A61E2008F0C44 /* Debug */,
+				D24A6D28249A61E2008F0C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D24A6CFC249A61E1008F0C44 /* Project object */;
+}
