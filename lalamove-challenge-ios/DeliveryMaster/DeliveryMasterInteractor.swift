@@ -9,9 +9,7 @@
 import UIKit.UITableView
 import SwiftyJSON
 
-enum DeliveryAPICallError {
-    case genericError, apiClientDeinit
-}
+
 
 class DeliveryMasterInteractor {
     
@@ -31,6 +29,7 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     func initialFetch() {
         let deliveriesInLocal = fetchDeliveriesFromLocal()
         presenter?.updateDeliveries(incomingDeliveries: deliveriesInLocal)
+        fetchDeliveries()
     }
     
     func showDeliveryDetails(index: Int) {
@@ -43,6 +42,7 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     }
     
     func fetchDeliveries() {
+        presenter?.refreshTableView()
         fetchDeliveriesFromAPI()
     }
     
@@ -67,6 +67,7 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
         let deliveries = jsonArr.compactMap({ json in
             return Delivery(json: json)
         })
+        
         presenter.updateDeliveries(incomingDeliveries: deliveries)
     }
     

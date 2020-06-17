@@ -47,8 +47,15 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     func setupAPIError(alertViewController: UIViewController) {
         present(alertViewController, animated: true, completion: { [weak self] in
             guard let self = self else { return }
-            self.interactor?.fetchDeliveries()
+            self.startLoadingIfNeeded()
         })
+    }
+    
+    fileprivate func startLoadingIfNeeded() {
+        if !isLoading {
+            isLoading = true
+            self.interactor?.fetchDeliveries()
+        }
     }
 }
 
@@ -62,15 +69,22 @@ extension DeliveryMasterViewController: UITableViewDelegate {
         interactor?.showDeliveryDetails(index: indexPath.row)
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let loadingView = UIActivityIndicatorView(style: .large)
+        loadingView.startAnimating()
+        return isLoading ? loadingView : nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return isLoading ? 100 : 0
+    }
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if maximumOffset - currentOffset <= 0 {
-            if !isLoading {
-                isLoading = true
-                self.interactor?.fetchDeliveries()
-            }
+            startLoadingIfNeeded()
         }
     }
 }

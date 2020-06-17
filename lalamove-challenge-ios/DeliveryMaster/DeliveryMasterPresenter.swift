@@ -20,6 +20,10 @@ class DeliveryMasterPresenter: NSObject {
 }
 
 extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
+    func refreshTableView() {
+        tableView?.reloadDeliveries()
+    }
+    
     func presentAPIError() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -54,7 +58,21 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     func updateDeliveries(incomingDeliveries: [Delivery]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.deliveries.append(contentsOf: incomingDeliveries)
+            
+            var isOverlap = false
+            
+            for d in incomingDeliveries {
+                if self.deliveries.contains(where: { $0.id == d.id }) {
+                    isOverlap = true
+                }
+            }
+            
+            if isOverlap && self.deliveries.count <= 20 {
+                self.deliveries = incomingDeliveries
+            } else {
+                self.deliveries.append(contentsOf: incomingDeliveries)
+            }
+
             self.tableView?.reloadDeliveries()
             self.viewController?.isRequestingMoreData = false
         }

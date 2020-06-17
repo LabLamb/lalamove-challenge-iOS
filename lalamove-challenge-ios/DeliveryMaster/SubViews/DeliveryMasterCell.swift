@@ -18,6 +18,7 @@ class DeliveryMasterCell: UITableViewCell {
     static let cellIdentifier = "deliveryMasterCell"
     
     let goodImage = UIImageView()
+    let favImage = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.red))
     let fromLabel = UILabel()
     let toLabel = UILabel()
     let priceLabel = UILabel()
@@ -41,11 +42,19 @@ class DeliveryMasterCell: UITableViewCell {
         
         contentView.addSubview(goodImage)
         goodImage.snp.makeConstraints { make in
-            make.height.equalToSuperview().multipliedBy(0.9)
+            make.height.equalToSuperview().multipliedBy(0.75)
             make.width.equalTo(goodImage.snp.height)
             make.centerX.centerY.equalToSuperview()
         }
         goodImage.clipsToBounds = false
+        
+        goodImage.addSubview(favImage)
+        favImage.snp.makeConstraints { make in
+            make.height.equalToSuperview().dividedBy(4)
+            make.width.equalTo(favImage.snp.height)
+            make.centerX.equalTo(goodImage.snp.left)
+            make.centerY.equalTo(goodImage.snp.top)
+        }
         
         contentView.addSubview(fromLabel)
         fromLabel.snp.makeConstraints { make in
@@ -74,6 +83,7 @@ class DeliveryMasterCell: UITableViewCell {
         fromLabel.text = summary.from
         toLabel.text = summary.to
         goodImage.image = summary.goodsPic
+        favImage.isHidden = !summary.isFav
         priceLabel.text = {
             guard let priceString = summary.price.toLocalCurrency(fractDigits: 2) else { return "" }
             return "$\(priceString)"

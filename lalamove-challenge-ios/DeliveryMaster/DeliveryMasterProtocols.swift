@@ -26,6 +26,7 @@ protocol DeliveryMasterPresenterInterface {
     func presentNavigationTitle()
     func getPagingInfo(limit: Int) -> DeliveryPagingInfo
     func presentAPIError()
+    func refreshTableView()
 }
 
 protocol DeliveryMasterViewControllerInterface {

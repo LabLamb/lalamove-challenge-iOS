@@ -11,6 +11,10 @@ import SwiftyJSON
 
 typealias DeliveryPagingInfo = (offset: Int, limit: Int)
 
+enum DeliveryAPICallError {
+    case genericError, apiClientDeinit
+}
+
 protocol DeliveryAPIClientInterface {
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
                                    onResponse: @escaping ([JSON]) -> (),
@@ -39,7 +43,8 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
         
         AF.request(deliverAPI,
                    parameters: param)
-            .responseJSON(queue: .init(label: requestQueueHint),completionHandler: { [weak self] res in
+            .responseJSON(queue: .init(label: requestQueueHint),
+                          completionHandler: { [weak self] res in
                 guard let self = self else {
                     onError(.apiClientDeinit)
                     return
