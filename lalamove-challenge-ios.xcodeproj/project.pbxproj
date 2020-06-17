@@ -3,12 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7AD2BBF19F7142EBDE3B9E11 /* libPods-lalamove-challenge-iosUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */; };
 		B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */; };
+		D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA0249A6592003F3CE6 /* Configurator.swift */; };
+		D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */; };
+		D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA5249A66DE003F3CE6 /* Delivery.swift */; };
+		D204DBAB249A6FC4003F3CE6 /* DeliveryMasterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAA249A6FC4003F3CE6 /* DeliveryMasterInteractor.swift */; };
+		D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */; };
+		D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */; };
+		D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */; };
 		D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D07249A61E1008F0C44 /* AppDelegate.swift */; };
 		D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */; };
 		D24A6D0C249A61E1008F0C44 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */; };
@@ -35,6 +42,13 @@
 		41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.release.xcconfig"; sourceTree = "<group>"; };
 		56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-iosUITests/Pods-lalamove-challenge-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D204DBA0249A6592003F3CE6 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverySummary.swift; sourceTree = "<group>"; };
+		D204DBA5249A66DE003F3CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		D204DBAA249A6FC4003F3CE6 /* DeliveryMasterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterInteractor.swift; sourceTree = "<group>"; };
+		D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenter.swift; sourceTree = "<group>"; };
+		D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAPIClient.swift; sourceTree = "<group>"; };
+		D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterRouter.swift; sourceTree = "<group>"; };
 		D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lalamove-challenge-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24A6D07249A61E1008F0C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +92,6 @@
 				86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */,
 				0148EFE6B5E08A07070A54D7 /* Pods-lalamove-challenge-iosUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +102,23 @@
 				DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D204DBA4249A6644003F3CE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */,
+				D204DBA5249A66DE003F3CE6 /* Delivery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D204DBB0249A710C003F3CE6 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */,
+			);
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		D24A6CFB249A61E1008F0C44 = {
@@ -116,6 +146,9 @@
 			children = (
 				D24A6D07249A61E1008F0C44 /* AppDelegate.swift */,
 				D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */,
+				D204DBA0249A6592003F3CE6 /* Configurator.swift */,
+				D204DBB0249A710C003F3CE6 /* APIClient */,
+				D204DBA4249A6644003F3CE6 /* Model */,
 				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
 				D24A6D10249A61E2008F0C44 /* Assets.xcassets */,
 				D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */,
@@ -136,9 +169,12 @@
 		D288F2FA249A6295003EAAA3 /* DeliveryMaster */ = {
 			isa = PBXGroup;
 			children = (
-				D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */,
 				D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */,
 				D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */,
+				D24A6D0B249A61E1008F0C44 /* DeliveryMasterViewController.swift */,
+				D204DBAA249A6FC4003F3CE6 /* DeliveryMasterInteractor.swift */,
+				D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */,
+				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
 			);
 			path = DeliveryMaster;
 			sourceTree = "<group>";
@@ -310,11 +346,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
+				D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */,
+				D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */,
 				D24A6D0C249A61E1008F0C44 /* DeliveryMasterViewController.swift in Sources */,
 				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,
 				D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */,
+				D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */,
+				D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */,
+				D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */,
 				D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */,
+				D204DBAB249A6FC4003F3CE6 /* DeliveryMasterInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

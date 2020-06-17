@@ -6,6 +6,18 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
-protocol DeliveryMasterPresenter {
-    func
+import UIKit.UIViewController
+
+protocol DeliveryMasterInteractorInterface {
+    func fetchDeliveriesFromAPI()
+    func getDeliverySummaries() -> [DeliverySummary]
+    func prepareToShowDeliveryDetails(index: Int)
+}
+
+protocol DeliveryMasterRouterInterface {
+    func routeToDetailPage(viewController: UIViewController)
+}
+
+protocol DeliveryMasterPresenterInterface {
+    func showDeliveryDetails(deliver: Delivery)
 }
