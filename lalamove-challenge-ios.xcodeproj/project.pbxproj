@@ -25,6 +25,8 @@
 		D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */; };
 		D24FB160249A8B1F00F149E0 /* UITableView+Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */; };
 		D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB161249A8DF600F149E0 /* Number+Format.swift */; };
+		D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */; };
+		D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */; };
 		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
 		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterCell.swift; sourceTree = "<group>"; };
 		D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reload.swift"; sourceTree = "<group>"; };
 		D24FB161249A8DF600F149E0 /* Number+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
+		D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageHandler.swift; sourceTree = "<group>"; };
+		D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Factory.swift"; sourceTree = "<group>"; };
 		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
 		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
 		DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-iosUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 				D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */,
 				D204DBA0249A6592003F3CE6 /* Configurator.swift */,
 				D204DBB0249A710C003F3CE6 /* APIClient */,
+				D24FB166249AA6DE00F149E0 /* LocalStorage */,
 				D204DBA4249A6644003F3CE6 /* Model */,
 				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
 				D24FB163249A8E0000F149E0 /* Extension */,
@@ -185,8 +190,17 @@
 			isa = PBXGroup;
 			children = (
 				D24FB161249A8DF600F149E0 /* Number+Format.swift */,
+				D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D24FB166249AA6DE00F149E0 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */,
+			);
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 		D288F2FA249A6295003EAAA3 /* DeliveryMaster */ = {
@@ -373,6 +387,7 @@
 			files = (
 				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
 				D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */,
+				D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
 				D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */,
 				D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */,
@@ -380,6 +395,7 @@
 				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,
 				D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */,
 				D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */,
+				D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */,
 				D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */,
 				D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */,
 				D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */,

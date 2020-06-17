@@ -11,25 +11,44 @@ import SnapKit
 class DeliveryMasterViewController: UIViewController {
     
     fileprivate let navTitle = "My Deliveries"
+    fileprivate var isLoading = true
     var interactor: DeliveryMasterInteractorInterface?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.initialFetch()
         interactor?.setupView()
     }
 }
 
 extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
+    
+    var isRequestingMoreData: Bool {
+        get {
+            return isLoading
+        }
+        set {
+            isLoading = newValue
+        }
+    }
+    
     func setupNavigationBarTitle() {
-        self.navigationItem.title = navTitle
+        navigationItem.title = navTitle
     }
     
 
     func setupTableView(tableView: UIView) {
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
+    }
+    
+    func setupAPIError(alertViewController: UIViewController) {
+        present(alertViewController, animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            self.interactor?.fetchDeliveries()
+        })
     }
 }
 
@@ -46,10 +65,12 @@ extension DeliveryMasterViewController: UITableViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-
-        // Change 10.0 to adjust the distance from bottom
-        if maximumOffset - currentOffset <= 10.0 {
-            self.interactor?.fetchDeliveries()
+        
+        if maximumOffset - currentOffset <= 0 {
+            if !isLoading {
+                isLoading = true
+                self.interactor?.fetchDeliveries()
+            }
         }
     }
 }

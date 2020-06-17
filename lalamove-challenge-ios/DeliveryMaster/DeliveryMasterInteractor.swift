@@ -7,20 +7,32 @@
 //
 
 import UIKit.UITableView
+import SwiftyJSON
+
+enum DeliveryAPICallError {
+    case genericError, apiClientDeinit
+}
 
 class DeliveryMasterInteractor {
-
-    let perPageLimit = 20
+    
+    private let localStorageAsyncHint = "DeliveryLocalStorageQueue"
+    private let perPageLimit = 20
+    
     var apiClient: DeliveryAPIClientInterface?
     var presenter: DeliveryMasterPresenterInterface?
     
     init() {
         apiClient = DeliveryAPIClient()
-        fetchDeliveriesFromAPI()
     }
 }
 
 extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
+    
+    func initialFetch() {
+        let deliveriesInLocal = fetchDeliveriesFromLocal()
+        presenter?.updateDeliveries(incomingDeliveries: deliveriesInLocal)
+    }
+    
     func showDeliveryDetails(index: Int) {
         presenter?.presentDeliveryDetails(index: index)
     }
@@ -33,18 +45,45 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     func fetchDeliveries() {
         fetchDeliveriesFromAPI()
     }
-
-    func fetchDeliveriesFromAPI() {
+    
+    fileprivate func fetchDeliveriesFromAPI() {
         let pagingInfo = presenter?.getPagingInfo(limit: perPageLimit)
-        apiClient?.fetchDeliveriesFromServer(paging: pagingInfo, onResponse: { [weak self] jsonArr in
-            guard let self = self,
-                let presenter = self.presenter else { return }
-            let deliveries = jsonArr.compactMap({ json in
-                return Delivery(json: json)
-            })
-            presenter.updateDeliveries(deliveries: deliveries)
-            }, onError: { [weak self] errorMsg in
-                print(errorMsg)
+        apiClient?.fetchDeliveriesFromServer(paging: pagingInfo,
+                                             onResponse: deliveryResponseHandler,
+                                             onError: deliveryErrorHandler)
+    }
+    
+    fileprivate func fetchDeliveriesFromLocal() -> [Delivery] {
+        return LocalStorageHandler().fetchDeliveriesFromLocal()
+    }
+    
+    fileprivate func deliveryResponseHandler(jsonArr: [JSON]) {
+        guard let presenter = self.presenter else { return }
+        
+        if presenter.getPagingInfo(limit: perPageLimit).offset == 0 {
+            cacheDataToLocal(jsonArr: jsonArr)
+        }
+        
+        let deliveries = jsonArr.compactMap({ json in
+            return Delivery(json: json)
         })
+        presenter.updateDeliveries(incomingDeliveries: deliveries)
+    }
+    
+    fileprivate func deliveryErrorHandler(error: DeliveryAPICallError) {
+        guard let presenter = self.presenter else { return }
+        presenter.presentAPIError()
+    }
+    
+    fileprivate func cacheDataToLocal(jsonArr: [JSON]) {
+        DispatchQueue.init(label: localStorageAsyncHint).async {
+            for i in 0..<jsonArr.count {
+                if let data = try? jsonArr[i].rawData() {
+                    LocalStorageHandler().storeDeliveryRawJSONToLocal(id: String(i), data: data, onError: { _ in
+                        print("fuck")
+                    })
+                }
+            }
+        }
     }
 }

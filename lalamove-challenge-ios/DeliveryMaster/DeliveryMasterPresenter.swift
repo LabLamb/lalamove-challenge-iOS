@@ -10,20 +10,31 @@ import UIKit
 
 class DeliveryMasterPresenter: NSObject {
     
+    private let genericErrorMessage = "Fail to fetch data from server" // Normall this should be a key for localized string
+    
     var deliveries: [Delivery] = []
     
     var tableView: DeliveryMasterTableView?
-    var viewController: (DeliveryMasterViewControllerInterface & UITableViewDelegate)?
+    weak var viewController: (DeliveryMasterViewControllerInterface & UITableViewDelegate)?
     var router: DeliveryMasterRouterInterface?
 }
 
 extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
-    func getPagingInfo(limit: Int) -> DeliveryPagingInfo? {
-        if limit % deliveries.count == 0 {
-            return (deliveries.count, limit)
-        } else {
-            return nil
+    func presentAPIError() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController.makeGenericAPIError(message: self.genericErrorMessage)
+            self.viewController?.setupAPIError(alertViewController: alert)
+            self.viewController?.isRequestingMoreData = false
         }
+    }
+    
+    func getPagingInfo(limit: Int) -> DeliveryPagingInfo {
+        if deliveries.count <= 0 {
+            return (0, limit)
+        }
+        
+        return (deliveries.count, limit)
     }
     
     func presentNavigationTitle() {
@@ -40,17 +51,19 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
         viewController?.setupTableView(tableView: tempTableView)
     }
     
-    func updateDeliveries(deliveries: [Delivery]) {
-        self.deliveries.append(contentsOf: deliveries)
+    func updateDeliveries(incomingDeliveries: [Delivery]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.deliveries.append(contentsOf: incomingDeliveries)
             self.tableView?.reloadDeliveries()
+            self.viewController?.isRequestingMoreData = false
         }
+        
     }
     
     func presentDeliveryDetails(index: Int) {
         if index < deliveries.count {
-            let delivery = deliveries[index]
+//            let delivery = deliveries[index]
             //        let deliveryDetVC = UIViewController()
             //        router?.routeToDetailPage(viewController: deliveryDetVC)
             
