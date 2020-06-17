@@ -22,6 +22,9 @@
 		D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */; };
 		D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */; };
 		D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */; };
+		D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */; };
+		D24FB160249A8B1F00F149E0 /* UITableView+Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */; };
+		D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB161249A8DF600F149E0 /* Number+Format.swift */; };
 		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
 		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +62,9 @@
 		D24A6D20249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterViewController.swift; sourceTree = "<group>"; };
 		D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterInteractor.swift; sourceTree = "<group>"; };
+		D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterCell.swift; sourceTree = "<group>"; };
+		D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reload.swift"; sourceTree = "<group>"; };
+		D24FB161249A8DF600F149E0 /* Number+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
 		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
 		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
 		DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-iosUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +156,7 @@
 				D204DBB0249A710C003F3CE6 /* APIClient */,
 				D204DBA4249A6644003F3CE6 /* Model */,
 				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
+				D24FB163249A8E0000F149E0 /* Extension */,
 				D24A6D10249A61E2008F0C44 /* Assets.xcassets */,
 				D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */,
 				D24A6D15249A61E2008F0C44 /* Info.plist */,
@@ -166,6 +173,22 @@
 			path = "lalamove-challenge-iosUITests";
 			sourceTree = "<group>";
 		};
+		D24FB15A249A76CA00F149E0 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		D24FB163249A8E0000F149E0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D24FB161249A8DF600F149E0 /* Number+Format.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D288F2FA249A6295003EAAA3 /* DeliveryMaster */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +198,8 @@
 				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
 				D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */,
 				D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */,
+				D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */,
+				D24FB15A249A76CA00F149E0 /* SubViews */,
 			);
 			path = DeliveryMaster;
 			sourceTree = "<group>";
@@ -347,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
+				D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
 				D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */,
 				D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */,
@@ -357,7 +383,9 @@
 				D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */,
 				D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */,
 				D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */,
+				D24FB160249A8B1F00F149E0 /* UITableView+Reload.swift in Sources */,
 				D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */,
+				D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

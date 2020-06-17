@@ -6,12 +6,11 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
-import UIKit.UIViewController
+import UIKit
 
 protocol DeliveryMasterInteractorInterface {
-    func fetchDeliveriesFromAPI()
-    func getDeliverySummaries() -> [DeliverySummary]
-    func prepareToShowDeliveryDetails(index: Int)
+    func fetchDeliveries()
+    func setupView()
 }
 
 protocol DeliveryMasterRouterInterface {
@@ -19,5 +18,11 @@ protocol DeliveryMasterRouterInterface {
 }
 
 protocol DeliveryMasterPresenterInterface {
-    func showDeliveryDetails(deliver: Delivery)
+    func updateDeliveries(deliveries: [Delivery])
+    func showDeliveryDetails(delivery: Delivery)
+    func presentTableView()
+}
+
+protocol DeliveryMasterViewControllerInterface {
+    func setupTableView(tableView: UIView)
 }

@@ -6,28 +6,37 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
-import Foundation
+import UIKit.UITableView
 
 class DeliveryMasterInteractor {
 
-    var deliveries = [Delivery]()
-//    var apiClient = DeliveryApiClient()
+    var apiClient: DeliveryAPIClientInterface?
     var presenter: DeliveryMasterPresenterInterface?
+    
+    init() {
+        apiClient = DeliveryAPIClient()
+        fetchDeliveriesFromAPI()
+    }
 }
 
 extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
+    
+    func setupView() {
+        presenter?.presentTableView()
+    }
+    
+    func fetchDeliveries() {
+        fetchDeliveriesFromAPI()
+    }
 
     func fetchDeliveriesFromAPI() {
-        // Ask API object to fetch
-    }
-    
-    func getDeliverySummaries() -> [DeliverySummary] {
-        // Return the object array in Summary form
-        return []
-    }
-    
-    func prepareToShowDeliveryDetails(index: Int) {
-        guard let presenter = presenter else { return }
-        presenter.showDeliveryDetails(deliver: deliveries[index])
+        apiClient?.fetchDeliveriesFromServer(onResponse: { [weak self] jsonArr in
+            guard let self = self,
+                let presenter = self.presenter else { return }
+            let deliveries = jsonArr.compactMap({ json in
+                return Delivery(json: json)
+            })
+            presenter.updateDeliveries(deliveries: deliveries)
+        })
     }
 }

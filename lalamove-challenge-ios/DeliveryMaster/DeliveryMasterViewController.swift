@@ -6,27 +6,31 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
-import UIKit
+import SnapKit
 
-class DeliveryMasterViewController: UITableViewController {
+class DeliveryMasterViewController: UIViewController {
     
     var interactor: DeliveryMasterInteractorInterface?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor?.setupView()
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let interactor = interactor else { return }
-        interactor.prepareToShowDeliveryDetails(index: indexPath.row)
+}
+
+extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
+
+    func setupTableView(tableView: UIView) {
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
     }
+}
+
+extension DeliveryMasterViewController: UITableViewDelegate {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let interactor = interactor else { return 0 }
-        return interactor.getDeliverySummaries().count
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }

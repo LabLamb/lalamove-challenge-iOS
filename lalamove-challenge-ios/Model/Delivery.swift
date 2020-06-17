@@ -16,12 +16,21 @@ class Delivery {
     let goodsPicData: Data? = nil
     let routeStart: String
     let routeEnd: String
+    private let deliveryFee: Double
+    private let surcharge: Double
+    var fee: Double {
+        get {
+            return deliveryFee + surcharge
+        }
+    }
     
     init(json: JSON) {
         self.id = json["id"].stringValue
         self.remarks = json["remark"].stringValue
         self.routeStart = json["route"].dictionaryValue["start"]?.stringValue ?? ""
         self.routeEnd = json["route"].dictionaryValue["end"]?.stringValue ?? ""
+        self.deliveryFee = Double(json["deliveryFee"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
+        self.surcharge = Double(json["surcharge"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
     }
     
     func getGoodsImage() -> UIImage {
@@ -37,7 +46,7 @@ extension Delivery: DeliverySummary {
     }
     
     var price: Double {
-        return 0.00
+        return fee
     }
     
     var from: String {

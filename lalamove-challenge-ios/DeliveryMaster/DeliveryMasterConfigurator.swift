@@ -13,13 +13,16 @@ class DeliveryMasterConfigurator: Configurator {
     func configViewController() -> UIViewController {
         let viewController = DeliveryMasterViewController()
         let interactor = DeliveryMasterInteractor()
-        let presenter = DeliveryMasterPresenter()
         let router = DeliveryMasterRouter()
+        
+        let presenter = DeliveryMasterPresenter()
         
         viewController.interactor = interactor
         interactor.presenter = presenter
-        presenter.router = router
         router.viewController = viewController
+        
+        presenter.router = router
+        presenter.viewController = viewController
         
         return viewController
     }
