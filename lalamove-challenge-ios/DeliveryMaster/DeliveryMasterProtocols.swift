@@ -11,6 +11,7 @@ import UIKit
 protocol DeliveryMasterInteractorInterface {
     func fetchDeliveries()
     func setupView()
+    func showDeliveryDetails(index: Int)
 }
 
 protocol DeliveryMasterRouterInterface {
@@ -19,10 +20,13 @@ protocol DeliveryMasterRouterInterface {
 
 protocol DeliveryMasterPresenterInterface {
     func updateDeliveries(deliveries: [Delivery])
-    func showDeliveryDetails(delivery: Delivery)
+    func presentDeliveryDetails(index: Int)
     func presentTableView()
+    func presentNavigationTitle()
+    func getPagingInfo(limit: Int) -> DeliveryPagingInfo?
 }
 
 protocol DeliveryMasterViewControllerInterface {
     func setupTableView(tableView: UIView)
+    func setupNavigationBarTitle()
 }

@@ -9,27 +9,50 @@
 import Alamofire
 import SwiftyJSON
 
+typealias DeliveryPagingInfo = (offset: Int, limit: Int)
+
 protocol DeliveryAPIClientInterface {
-    func fetchDeliveriesFromServer(onResponse: @escaping ([JSON]) -> ())
+    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
+                                   onResponse: @escaping ([JSON]) -> (),
+                                   onError: @escaping (String) -> ())
+    
+    func fetchImageFromLink(onResponse: @escaping (Data) -> (),
+    onError: @escaping (String) -> ())
 }
 
 class DeliveryAPIClient: DeliveryAPIClientInterface {
     
     private let requestQueueHint = "DeliveryRequestQueue"
     
-    func fetchDeliveriesFromServer(onResponse: @escaping ([JSON]) -> ()) {
-        let params = ["offset": 0, "limit": 20]
-        AF.request("https://mock-api-mobile.dev.lalamove.com/v2/deliveries", parameters: params).responseJSON(completionHandler: { res in
-            guard let data = res.data,
-                let jsonArr = try? JSON(data: data).arrayValue else {
-                    onResponse([])
+    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
+                                   onResponse: @escaping ([JSON]) -> (),
+                                   onError: @escaping (String) -> ()) {
+        let param: [String: Any]? = {
+            guard let paging = paging else { return nil }
+            return ["offset": paging.offset,
+            "limit": paging.limit]
+        }()
+        AF.request("https://mock-api-mobile.dev.lalamove.com/v2/deliveries", parameters: param).responseJSON(queue: .init(label: requestQueueHint), completionHandler: { res in
+            switch res.result {
+            case .success:
+                guard let data = res.data,
+                    let jsonArr = try? JSON(data: data).arrayValue else {
+                        onResponse([])
+                        return
+                }
+                onResponse(jsonArr)
+            case .failure(let error):
+                guard let errorMsg = error.errorDescription else {
+                    onError("")
                     return
+                }
+                onError(errorMsg)
             }
-            onResponse(jsonArr)
         })
-//        AF.request("https://mock-api-mobile.dev.lalamove.com/v2/deliveries", parameters: params).responseJSON(queue: .init(label: requestQueueHint), completionHandler: { res in
-//            print(res)
-//            onResponse([])
-//        })
+    }
+    
+    func fetchImageFromLink(onResponse: @escaping (Data) -> (),
+                            onError: @escaping (String) -> ()) {
+        
     }
 }

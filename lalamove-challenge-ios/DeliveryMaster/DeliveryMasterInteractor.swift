@@ -10,6 +10,7 @@ import UIKit.UITableView
 
 class DeliveryMasterInteractor {
 
+    let perPageLimit = 20
     var apiClient: DeliveryAPIClientInterface?
     var presenter: DeliveryMasterPresenterInterface?
     
@@ -20,9 +21,13 @@ class DeliveryMasterInteractor {
 }
 
 extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
+    func showDeliveryDetails(index: Int) {
+        presenter?.presentDeliveryDetails(index: index)
+    }
     
     func setupView() {
         presenter?.presentTableView()
+        presenter?.presentNavigationTitle()
     }
     
     func fetchDeliveries() {
@@ -30,13 +35,16 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     }
 
     func fetchDeliveriesFromAPI() {
-        apiClient?.fetchDeliveriesFromServer(onResponse: { [weak self] jsonArr in
+        let pagingInfo = presenter?.getPagingInfo(limit: perPageLimit)
+        apiClient?.fetchDeliveriesFromServer(paging: pagingInfo, onResponse: { [weak self] jsonArr in
             guard let self = self,
                 let presenter = self.presenter else { return }
             let deliveries = jsonArr.compactMap({ json in
                 return Delivery(json: json)
             })
             presenter.updateDeliveries(deliveries: deliveries)
+            }, onError: { [weak self] errorMsg in
+                print(errorMsg)
         })
     }
 }

@@ -9,15 +9,30 @@
 import UIKit
 
 class DeliveryMasterPresenter: NSObject {
+    
+    var deliveries: [Delivery] = []
+    
     var tableView: DeliveryMasterTableView?
     var viewController: (DeliveryMasterViewControllerInterface & UITableViewDelegate)?
     var router: DeliveryMasterRouterInterface?
-    var deliveries: [Delivery] = []
 }
 
 extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
+    func getPagingInfo(limit: Int) -> DeliveryPagingInfo? {
+        if limit % deliveries.count == 0 {
+            return (deliveries.count, limit)
+        } else {
+            return nil
+        }
+    }
+    
+    func presentNavigationTitle() {
+        viewController?.setupNavigationBarTitle()
+    }
+    
     func presentTableView() {
         let tempTableView = UITableView()
+        tempTableView.separatorStyle = .none
         tempTableView.dataSource = self
         tempTableView.delegate = viewController
         tempTableView.register(DeliveryMasterCell.self, forCellReuseIdentifier: DeliveryMasterCell.cellIdentifier)
@@ -26,13 +41,20 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     }
     
     func updateDeliveries(deliveries: [Delivery]) {
-        self.deliveries = deliveries
-        tableView?.reloadDeliveries()
+        self.deliveries.append(contentsOf: deliveries)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView?.reloadDeliveries()
+        }
     }
     
-    func showDeliveryDetails(delivery: Delivery) {
-//        let deliveryDetVC = UIViewController()
-//        router?.routeToDetailPage(viewController: deliveryDetVC)
+    func presentDeliveryDetails(index: Int) {
+        if index < deliveries.count {
+            let delivery = deliveries[index]
+            //        let deliveryDetVC = UIViewController()
+            //        router?.routeToDetailPage(viewController: deliveryDetVC)
+            
+        }
     }
 }
 
