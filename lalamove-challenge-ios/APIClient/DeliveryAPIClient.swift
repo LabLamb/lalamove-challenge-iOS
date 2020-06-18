@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 typealias DeliveryPagingInfo = (offset: Int, limit: Int)
@@ -20,12 +21,12 @@ protocol DeliveryAPIClientInterface {
                                    onResponse: @escaping ([JSON]) -> (),
                                    onError: @escaping (DeliveryAPICallError) -> ())
     
-    func fetchImageFromLink(onResponse: @escaping (Data) -> (),
-                            onError: @escaping (String) -> ())
+    func fetchImageFromLink(imgUrl: String,
+                            onResponse: @escaping (UIImage) -> ())
 }
 
 class DeliveryAPIClient {
-    private let deliverAPI = "https://mock-api-mobile.dev.lalamove.com/v2/deliveries"
+    private let deliverAPI = "https://mock-api-mobile.dev.lalamove.com/v2/deliveries" // Normally would keep it in a .json file
     private let requestQueueHint = "DeliveryRequestQueue"
 }
 
@@ -68,8 +69,16 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
         onResponse(jsonArr)
     }
     
-    func fetchImageFromLink(onResponse: @escaping (Data) -> (),
-                            onError: @escaping (String) -> ()) {
-        
+    func fetchImageFromLink(imgUrl: String,
+                            onResponse: @escaping (UIImage) -> ()) {
+        AF.request(imgUrl, method: .get)
+            .responseImage(completionHandler: { res in
+                switch res.result {
+                case .success(let image):
+                    onResponse(image)
+                case .failure:
+                    break
+                }
+        })
     }
 }

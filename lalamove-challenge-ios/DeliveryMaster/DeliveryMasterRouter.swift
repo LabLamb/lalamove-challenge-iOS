@@ -14,10 +14,10 @@ class DeliveryMasterRouter {
 
 extension DeliveryMasterRouter: DeliveryMasterRouterInterface {
     func routeToDetailPage(viewController: UIViewController) {
-        if let nav = viewController.navigationController {
+        if let nav = self.viewController?.navigationController {
             nav.pushViewController(viewController, animated: true)
         } else {
-            viewController.present(viewController, animated: true)
+            self.viewController?.present(viewController, animated: true)
         }
     }
 }

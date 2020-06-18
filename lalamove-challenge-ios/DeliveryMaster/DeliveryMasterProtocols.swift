@@ -8,30 +8,30 @@
 
 import UIKit
 
-protocol DeliveryMasterInteractorInterface {
+protocol DeliveryMasterViewControllerInterface: BaseViewController {
+    var isRequestingMoreData: Bool { get set }
+    func setupTableView(tableView: UIView)
+    func showAPIError(alertViewController: UIViewController)
+}
+
+protocol DeliveryMasterInteractorInterface: BaseInteractor {
     func initialFetch()
     func fetchDeliveries()
-    func setupView()
     func showDeliveryDetails(index: Int)
+}
+
+protocol DeliveryMasterPresenterInterface: BasePresenter {
+    func presentDeliveryDetails(index: Int)
+    func presentTableView()
+    func presentAPIError()
+    
+    func updateDeliveries(incomingDeliveries: [Delivery])
+    func updateDeliveryImage(with id: String, image: UIImage)
+    
+    func getPagingInfo(limit: Int) -> DeliveryPagingInfo
+    func refreshTableView()
 }
 
 protocol DeliveryMasterRouterInterface {
     func routeToDetailPage(viewController: UIViewController)
-}
-
-protocol DeliveryMasterPresenterInterface {
-    func updateDeliveries(incomingDeliveries: [Delivery])
-    func presentDeliveryDetails(index: Int)
-    func presentTableView()
-    func presentNavigationTitle()
-    func getPagingInfo(limit: Int) -> DeliveryPagingInfo
-    func presentAPIError()
-    func refreshTableView()
-}
-
-protocol DeliveryMasterViewControllerInterface {
-    var isRequestingMoreData: Bool { get set }
-    func setupTableView(tableView: UIView)
-    func setupNavigationBarTitle()
-    func setupAPIError(alertViewController: UIViewController)
 }

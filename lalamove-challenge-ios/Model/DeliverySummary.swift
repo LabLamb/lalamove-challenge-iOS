@@ -13,5 +13,5 @@ protocol DeliverySummary {
     var from: String { get }
     var to: String { get }
     var isFav: Bool { get }
-    var goodsPic: UIImage { get }
+    var goodsPic: UIImage? { get }
 }

@@ -13,7 +13,7 @@ class Delivery {
     let id: String
     let remarks: String
     var isFavorite = false
-    let goodsPicData: Data? = nil
+    var goodsPicData: Data? = nil
     let routeStart: String
     let routeEnd: String
     private let deliveryFee: Double
@@ -24,7 +24,7 @@ class Delivery {
         }
     }
     
-    init(json: JSON) {
+    init(json: JSON) { // Not going to use object mapping libraries because this app only has 1 model
         self.id = json["id"].stringValue
         self.remarks = json["remark"].stringValue
         self.routeStart = json["route"].dictionaryValue["start"]?.stringValue ?? ""
@@ -33,15 +33,15 @@ class Delivery {
         self.surcharge = Double(json["surcharge"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
     }
     
-    func getGoodsImage() -> UIImage {
+    func getGoodsImage() -> UIImage? {
         guard let goodsPicData = goodsPicData,
-            let image = UIImage(data: goodsPicData) else { return UIImage() }
+            let image = UIImage(data: goodsPicData) else { return nil }
         return image
     }
 }
 
 extension Delivery: DeliverySummary {
-    var goodsPic: UIImage {
+    var goodsPic: UIImage? {
         return getGoodsImage()
     }
     

@@ -5,6 +5,7 @@ target 'lalamove-challenge-ios' do
   pod 'SnapKit'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftDate'
 
   target 'lalamove-challenge-iosUITests' do

@@ -8,19 +8,40 @@
 
 import SnapKit
 
+protocol DeliveryMasterCellImageUpdatable {
+    func updateImage(image: UIImage)
+}
+
 class DeliveryMasterCell: UITableViewCell {
     
     struct UIConstants {
-        static let fromToLabelOffset = 25
+        static let goodsImageLeftOffset = 15
+        static let fromToLabelOffsetFromLeft = 15
+        static let fromToLabelOffsetFromTopBot = 15
         static let priceLabelOffset = 25
     }
     
     static let cellIdentifier = "deliveryMasterCell"
+    private let favImagePlaceholder = UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysTemplate)
     
-    let goodImage = UIImageView()
-    let favImage = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.red))
-    let fromLabel = UILabel()
-    let toLabel = UILabel()
+    lazy var goodImage: UIImageView = {
+        let result = UIImageView()
+        result.backgroundColor = .white
+        result.layer.borderColor = UIColor.lightGray.cgColor
+        result.layer.borderWidth = 1
+        result.tintColor = .white
+        return result
+    }()
+    
+    lazy var favImage: UIImageView = {
+        let result = UIImageView()
+        result.image = self.favImagePlaceholder
+        result.tintColor = .systemYellow
+        return result
+    }()
+    
+    let fromLabel = SubtitleView()
+    let toLabel = SubtitleView()
     let priceLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,38 +55,34 @@ class DeliveryMasterCell: UITableViewCell {
     
     override func prepareForReuse() {
         goodImage.image = nil
-        fromLabel.text = ""
-        toLabel.text = ""
+        fromLabel.updateText(titleText: "N/A", subtitleText: "From")
+        toLabel.updateText(titleText: "N/A", subtitleText: "To")
     }
     
     fileprivate func setupConstraints() {
+        selectionStyle = .none
         
         contentView.addSubview(goodImage)
         goodImage.snp.makeConstraints { make in
             make.height.equalToSuperview().multipliedBy(0.75)
             make.width.equalTo(goodImage.snp.height)
-            make.centerX.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(UIConstants.goodsImageLeftOffset)
+            make.centerY.equalToSuperview()
         }
-        goodImage.clipsToBounds = false
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.goodImage.clipsToBounds = true
+            self.goodImage.layer.cornerRadius = self.goodImage.frame.width / 2
+        }
         
-        goodImage.addSubview(favImage)
+        contentView.addSubview(favImage)
         favImage.snp.makeConstraints { make in
             make.height.equalToSuperview().dividedBy(4)
             make.width.equalTo(favImage.snp.height)
-            make.centerX.equalTo(goodImage.snp.left)
-            make.centerY.equalTo(goodImage.snp.top)
+            make.right.equalTo(goodImage.snp.right)
+            make.bottom.equalTo(goodImage.snp.bottom)
         }
         
-        contentView.addSubview(fromLabel)
-        fromLabel.snp.makeConstraints { make in
-            make.top.left.equalToSuperview().offset(UIConstants.fromToLabelOffset)
-        }
-        
-        contentView.addSubview(toLabel)
-        toLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-UIConstants.fromToLabelOffset)
-            make.left.equalToSuperview().offset(UIConstants.fromToLabelOffset)
-        }
         
         contentView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
@@ -73,20 +90,44 @@ class DeliveryMasterCell: UITableViewCell {
             make.right.equalToSuperview().offset(-UIConstants.priceLabelOffset)
         }
         
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.goodImage.layer.cornerRadius = self.goodImage.frame.height / 2
+        contentView.addSubview(fromLabel)
+        fromLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(UIConstants.fromToLabelOffsetFromTopBot)
+            make.left.equalTo(self.goodImage.snp.right).offset(UIConstants.fromToLabelOffsetFromLeft)
+            make.right.equalTo(self.priceLabel.snp.left)
+            make.height.equalTo(fromLabel.titleFont.lineHeight + fromLabel.subtitleFont.lineHeight)
+        }
+        
+        contentView.addSubview(toLabel)
+        toLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-UIConstants.fromToLabelOffsetFromTopBot)
+            make.left.equalTo(self.goodImage.snp.right).offset(UIConstants.fromToLabelOffsetFromLeft)
+            make.right.equalTo(self.priceLabel.snp.left)
+            make.height.equalTo(toLabel.titleFont.lineHeight + toLabel.subtitleFont.lineHeight)
         }
     }
     
     func configData(summary: DeliverySummary) {
-        fromLabel.text = summary.from
-        toLabel.text = summary.to
-        goodImage.image = summary.goodsPic
+        fromLabel.updateText(titleText: summary.from, subtitleText: "From")
+        toLabel.updateText(titleText: summary.to, subtitleText: "To")
+        
+        if let pic = summary.goodsPic {
+            goodImage.image = pic
+        }
+        
+        favImage.image = favImagePlaceholder
         favImage.isHidden = !summary.isFav
+        
         priceLabel.text = {
             guard let priceString = summary.price.toLocalCurrency(fractDigits: 2) else { return "" }
             return "$\(priceString)"
         }()
     }
+}
+
+extension DeliveryMasterCell: DeliveryMasterCellImageUpdatable {
+    func updateImage(image: UIImage) {
+        goodImage.image = image
+    }
+    
 }

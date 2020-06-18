@@ -44,11 +44,10 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
         }
     }
     
-    func setupAPIError(alertViewController: UIViewController) {
-        present(alertViewController, animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            self.startLoadingIfNeeded()
-        })
+    func showAPIError(alertViewController: UIViewController) {
+        if viewIfLoaded?.window != nil {
+            present(alertViewController, animated: true)
+        }
     }
     
     fileprivate func startLoadingIfNeeded() {
@@ -62,7 +61,7 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
 extension DeliveryMasterViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return view.frame.height / 8
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,7 +75,7 @@ extension DeliveryMasterViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return isLoading ? 100 : 0
+        return isLoading ? (view.frame.height / 8) : 0
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

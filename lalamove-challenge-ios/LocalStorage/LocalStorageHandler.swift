@@ -10,7 +10,12 @@ import SwiftyJSON
 
 class FileFailedToWriteError: Error {}
 
-class LocalStorageHandler {
+protocol LocalStorageHandlerInterface {
+    func storeDeliveryRawJSONToLocal(id: String, data: Data, onError: (FileFailedToWriteError) -> ())
+    func fetchDeliveriesFromLocal() -> [JSON]
+}
+
+class LocalStorageHandler: LocalStorageHandlerInterface {
     
     private let jsonStorageFolder = "lalamove-challange-folder"
     private let jsonExtension = "json"
@@ -34,8 +39,8 @@ class LocalStorageHandler {
         try! data.write(to: fileURL, options: .atomic)
     }
     
-    func fetchDeliveriesFromLocal() -> [Delivery] {
-        var result: [Delivery] = []
+    func fetchDeliveriesFromLocal() -> [JSON] {
+        var result: [JSON] = []
         let fileManager = FileManager.default
         let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(jsonStorageFolder)
         do {
@@ -44,7 +49,7 @@ class LocalStorageHandler {
                 for i in 0..<fileURLs.count {
                     let data = try! Data(contentsOf: documentsURL.appendingPathComponent(String(i)).appendingPathExtension(jsonExtension))
                     let json = try! JSON(data: data)
-                    result.append(Delivery(json: json))
+                    result.append(json)
                 }
             }
         } catch {

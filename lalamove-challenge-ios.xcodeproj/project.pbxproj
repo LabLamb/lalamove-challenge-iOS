@@ -23,10 +23,15 @@
 		D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */; };
 		D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */; };
 		D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */; };
-		D24FB160249A8B1F00F149E0 /* UITableView+Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */; };
+		D24FB160249A8B1F00F149E0 /* UITableView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */; };
 		D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB161249A8DF600F149E0 /* Number+Format.swift */; };
 		D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */; };
 		D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */; };
+		D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB169249AD29100F149E0 /* SubtitleView.swift */; };
+		D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */; };
+		D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */; };
+		D27AA374249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */; };
+		D27AA376249B1D7900BF84C4 /* BaseVIPERProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */; };
 		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
 		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
 /* End PBXBuildFile section */
@@ -65,10 +70,15 @@
 		D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterViewController.swift; sourceTree = "<group>"; };
 		D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterInteractor.swift; sourceTree = "<group>"; };
 		D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterCell.swift; sourceTree = "<group>"; };
-		D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reload.swift"; sourceTree = "<group>"; };
+		D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Refresh.swift"; sourceTree = "<group>"; };
 		D24FB161249A8DF600F149E0 /* Number+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
 		D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageHandler.swift; sourceTree = "<group>"; };
 		D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Factory.swift"; sourceTree = "<group>"; };
+		D24FB169249AD29100F149E0 /* SubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleView.swift; sourceTree = "<group>"; };
+		D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailViewController.swift; sourceTree = "<group>"; };
+		D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailProtocols.swift; sourceTree = "<group>"; };
+		D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailConfigurator.swift; sourceTree = "<group>"; };
+		D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIPERProtocols.swift; sourceTree = "<group>"; };
 		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
 		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
 		DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-iosUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,10 +167,12 @@
 				D24A6D07249A61E1008F0C44 /* AppDelegate.swift */,
 				D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */,
 				D204DBA0249A6592003F3CE6 /* Configurator.swift */,
+				D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */,
 				D204DBB0249A710C003F3CE6 /* APIClient */,
 				D24FB166249AA6DE00F149E0 /* LocalStorage */,
 				D204DBA4249A6644003F3CE6 /* Model */,
 				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
+				D27AA36D249B1C0D00BF84C4 /* DeliveryDetails */,
 				D24FB163249A8E0000F149E0 /* Extension */,
 				D24A6D10249A61E2008F0C44 /* Assets.xcassets */,
 				D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */,
@@ -182,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */,
+				D24FB169249AD29100F149E0 /* SubtitleView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -203,16 +216,34 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
+		D27AA36D249B1C0D00BF84C4 /* DeliveryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */,
+				D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */,
+				D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */,
+				D27AA370249B1C3900BF84C4 /* SubViews */,
+			);
+			path = DeliveryDetails;
+			sourceTree = "<group>";
+		};
+		D27AA370249B1C3900BF84C4 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		D288F2FA249A6295003EAAA3 /* DeliveryMaster */ = {
 			isa = PBXGroup;
 			children = (
 				D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */,
 				D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */,
-				D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */,
-				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
 				D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */,
 				D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */,
-				D24FB15F249A8B1F00F149E0 /* UITableView+Reload.swift */,
+				D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */,
+				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
+				D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */,
 				D24FB15A249A76CA00F149E0 /* SubViews */,
 			);
 			path = DeliveryMaster;
@@ -386,11 +417,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
+				D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */,
 				D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */,
+				D27AA376249B1D7900BF84C4 /* BaseVIPERProtocols.swift in Sources */,
 				D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */,
+				D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
 				D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */,
 				D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */,
+				D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */,
 				D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */,
 				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,
 				D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */,
@@ -399,7 +434,8 @@
 				D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */,
 				D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */,
 				D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */,
-				D24FB160249A8B1F00F149E0 /* UITableView+Reload.swift in Sources */,
+				D27AA374249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift in Sources */,
+				D24FB160249A8B1F00F149E0 /* UITableView+Refresh.swift in Sources */,
 				D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */,
 				D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */,
 			);
