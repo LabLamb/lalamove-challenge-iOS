@@ -14,8 +14,7 @@ class DeliveryMasterPresenter: NSObject {
     
     var deliveries: [Delivery] = []
     
-    var tableView: Refreashable?
-    weak var viewController: (DeliveryMasterViewControllerInterface & UITableViewDelegate)?
+    weak var viewController: DeliveryMasterViewControllerInterface?
     var router: DeliveryMasterRouterInterface?
 }
 
@@ -23,7 +22,7 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     func updateDeliveryImage(with id: String, image: UIImage) {
         guard let index = deliveries.firstIndex(where: { $0.id == id }) else { return }
         deliveries[index].goodsPicData = image.pngData()?.base64EncodedString()
-        tableView?.refresh()
+        viewController?.reloadTableView()
     }
     
     func getPagingInfo(limit: Int) -> DeliveryPagingInfo {
@@ -37,15 +36,13 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     func presentTableView() {
         let tempTableView = UITableView()
         tempTableView.dataSource = self
-        tempTableView.delegate = viewController
         tempTableView.register(DeliveryMasterCell.self, forCellReuseIdentifier: DeliveryMasterCell.cellIdentifier)
-        tableView = tempTableView
         viewController?.setupTableView(tableView: tempTableView)
     }
     
     func updateDeliveries(incomingDeliveries: [Delivery]) {
         deliveries.append(contentsOf: incomingDeliveries)
-        presentCompleteFetchAnimation()
+        presentStopFetchAnimation()
     }
     
     func presentDeliveryDetails(index: Int) {
@@ -57,14 +54,12 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
         }
     }
     
-    func presentCompleteFetchAnimation() {
-        viewController?.stopRequestAnimation()
-        tableView?.refresh()
+    func presentStopFetchAnimation() {
+        viewController?.toggleRequestAnimation(animate: false)
     }
     
     func presentStartingFetchAnimation() {
-        viewController?.startRequestAnimation()
-        tableView?.refresh()
+        viewController?.toggleRequestAnimation(animate: true)
     }
 }
 

@@ -65,10 +65,6 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
         guard let localStorageHandler = localStorageHandler else { return }
         let deliveries = localStorageHandler.fetchDeliveriesFromLocal(batch: getBatchNumber())
         updateDeliveriesIfNeeded(deliveries: deliveries)
-        
-        if deliveries.isEmpty {
-            
-        }
     }
     
     func updateDeliveriesIfNeeded(deliveries: [Delivery]) {

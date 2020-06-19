@@ -28,12 +28,16 @@ class DeliveryMasterViewController: UIViewController {
 
 extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     
-    func startRequestAnimation() {
-        isLoading = true
+    func reloadTableView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView?.reloadData()
+        }
     }
     
-    func stopRequestAnimation() {
-        isLoading = false
+    func toggleRequestAnimation(animate: Bool) {
+        isLoading = animate
+        reloadTableView()
     }
     
     func setupNavigationBarTitle() {
@@ -42,6 +46,7 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     
 
     func setupTableView(tableView: UITableView) {
+        tableView.delegate = self
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()

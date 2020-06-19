@@ -20,7 +20,7 @@ struct DeliveryStateHandler {
 
 extension DeliveryStateHandler: DeliveryStateHandlerInterface {
     
-    func readFavoritesStatus(ids: [String]) -> [String : Bool] {
+    func readFavoritesStatus(ids: [String]) -> [String: Bool] {
         var result = [String: Bool]()
         
         for id in ids {

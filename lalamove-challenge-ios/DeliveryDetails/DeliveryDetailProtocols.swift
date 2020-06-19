@@ -9,18 +9,18 @@
 import Foundation
 import UIKit.UIButton
 
-protocol DeliveryDetailViewControllerInterface: BaseViewController {
+protocol DeliveryDetailViewControllerInterface: BaseViewControllerInterface {
     func toggleFavBtn(isFav: Bool)
     func setupFavBtn(favBtn: UIButton)
     func setupInfoView(infoView: DeliveryDetailInfoView)
 }
 
-protocol DeliveryDetailInteractorInterface: BaseInteractor {
+protocol DeliveryDetailInteractorInterface: BaseInteractorInterface {
     func updateLocalDeliveryFavorite(status: Bool)
     func updateFavoriteBtnStatus()
 }
 
-protocol DeliveryDetailPresenterInterface: BasePresenter {
+protocol DeliveryDetailPresenterInterface: BasePresenterInterface {
     func presentFavoriteButton()
     func presentInfoView()
     func updateFavoriteBtn()

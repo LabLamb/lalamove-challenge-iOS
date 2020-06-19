@@ -13,14 +13,14 @@ protocol Configurator {
     func configViewController() -> UIViewController
 }
 
-protocol BaseViewController: class {
+protocol BaseViewControllerInterface: class {
     func setupNavigationBarTitle()
 }
 
-protocol BaseInteractor {
+protocol BaseInteractorInterface {
     func setupView()
 }
 
-protocol BasePresenter {
+protocol BasePresenterInterface {
     func presentNavigationTitle()
 }

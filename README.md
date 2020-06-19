@@ -1,6 +1,9 @@
 # lalamove-challenge-iOS
 iOS Challange for lalamove.
 
+## Architecture
+This repo does not follow VIPER 100%, this is a showcase of something simuilar that (try to) follow the SOLID princeables.
+
 ## Unimplemented improvements
 These are some improvements that I would like to implement but did not due to out-of-scope / insufficient time.
 

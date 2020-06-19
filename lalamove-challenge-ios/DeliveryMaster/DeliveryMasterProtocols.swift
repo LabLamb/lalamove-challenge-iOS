@@ -8,22 +8,22 @@
 
 import UIKit
 
-protocol DeliveryMasterViewControllerInterface: BaseViewController {
+protocol DeliveryMasterViewControllerInterface: BaseViewControllerInterface {
     func setupTableView(tableView: UITableView)
-    func startRequestAnimation()
-    func stopRequestAnimation()
+    func reloadTableView()
+    func toggleRequestAnimation(animate: Bool)
 }
 
-protocol DeliveryMasterInteractorInterface: BaseInteractor {
+protocol DeliveryMasterInteractorInterface: BaseInteractorInterface {
     func fetchDeliveries()
     func showDeliveryDetails(index: Int)
 }
 
-protocol DeliveryMasterPresenterInterface: BasePresenter {
+protocol DeliveryMasterPresenterInterface: BasePresenterInterface {
     func presentDeliveryDetails(index: Int)
     func presentTableView()
     func presentStartingFetchAnimation()
-    func presentCompleteFetchAnimation()
+    func presentStopFetchAnimation()
     
     func updateDeliveries(incomingDeliveries: [Delivery])
     func updateDeliveryImage(with id: String, image: UIImage)
