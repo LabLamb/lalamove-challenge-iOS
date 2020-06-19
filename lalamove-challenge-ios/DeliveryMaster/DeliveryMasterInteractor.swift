@@ -16,15 +16,18 @@ class DeliveryMasterInteractor {
     fileprivate let localStorageAsyncHint = "DeliveryLocalStorageQueue"
     fileprivate let perPageLimit = 20
     
+    fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
     fileprivate var apiClient: DeliveryAPIClientInterface?
     fileprivate var localStorageHandler: DeliveryLocalStorageHandlerInterface?
     
     var presenter: DeliveryMasterPresenterInterface?
     
     init(apiClient: DeliveryAPIClientInterface = DeliveryAPIClient(),
-         localStorageHandler: DeliveryLocalStorageHandlerInterface = DeliveryLocalStorageHandler()) {
+         localStorageHandler: DeliveryLocalStorageHandlerInterface = DeliveryLocalStorageHandler(),
+         deliveryStatehandler: DeliveryStateHandlerInterface = DeliveryStateHandler()) {
         self.apiClient = apiClient
         self.localStorageHandler = localStorageHandler
+        self.deliveryStatehandler = deliveryStatehandler
     }
 }
 
@@ -48,28 +51,39 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     }
     
     func deliveryResponseHandler(jsonArr: [JSON]) {
-        guard let presenter = self.presenter else { return }
-        
         let output = makeDeliversAndImgDetails(with: jsonArr)
         let deliveries = output.delivers
         let imgDetails = output.imgDetails
         
         let batchId = getBatchNumber()
         localStorageHandler?.storeDeliveriesJSON(batch: batchId, deliveries: deliveries)
-        updateDeliveryGoodPictures(batch: batchId, imgDetails: imgDetails)
+        fetchDeliveriesGoodImage(batch: batchId, imgDetails: imgDetails)
+        updateDeliveriesIfNeeded(deliveries: deliveries)
+    }
+    
+    func deliveryErrorHandler(error: DeliveryAPICallError) {
+        guard let localStorageHandler = localStorageHandler else { return }
+        let deliveries = localStorageHandler.fetchDeliveriesFromLocal(batch: getBatchNumber())
+        updateDeliveriesIfNeeded(deliveries: deliveries)
+        
+        if deliveries.isEmpty {
+            
+        }
+    }
+    
+    func updateDeliveriesIfNeeded(deliveries: [Delivery]) {
+        guard let presenter = self.presenter else { return }
+        
+        let deliveriesIds = deliveries.compactMap({ $0.id })
+        if let handler = deliveryStatehandler {
+            let map = handler.readFavoritesStatus(ids: deliveriesIds)
+            updateIsFavForDelivery(deliveries: deliveries, with: map)
+        }
         
         presenter.updateDeliveries(incomingDeliveries: deliveries)
     }
     
-    func deliveryErrorHandler(error: DeliveryAPICallError) {
-        guard let presenter = self.presenter else { return }
-        guard let localStorageHandler = localStorageHandler else { return }
-        let deliveries = localStorageHandler.fetchDeliveriesFromLocal(batch: getBatchNumber())
-        presenter.updateDeliveries(incomingDeliveries: deliveries)
-        presenter.presentCompleteFetchAnimation()
-    }
-    
-    func updateDeliveryGoodPictures(batch: Int, imgDetails: [GoodsImgFetchDetails]) {
+    func fetchDeliveriesGoodImage(batch: Int, imgDetails: [GoodsImgFetchDetails]) {
         for imgDetail in imgDetails {
             
             let updater: (UIImage) -> () = { image in
@@ -96,6 +110,12 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
         }
         
         return (delivers: deliveries, imgDetails: imageDetails)
+    }
+    
+    func updateIsFavForDelivery(deliveries: [Delivery], with map: [String: Bool]) {
+        for (key, value) in map {
+            deliveries.first(where: { $0.id == key })?.isFavorite = value
+        }
     }
     
     func getBatchNumber() -> Int {

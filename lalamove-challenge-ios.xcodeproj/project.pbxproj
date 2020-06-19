@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,7 @@
 		D24FB165249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */; };
 		D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */; };
 		D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB169249AD29100F149E0 /* SubtitleView.swift */; };
+		D256548E249C8EDA00EB9A81 /* DeliveryStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256548D249C8EDA00EB9A81 /* DeliveryStateHandler.swift */; };
 		D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */; };
 		D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */; };
 		D27AA374249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */; };
@@ -75,6 +76,7 @@
 		D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryLocalStorageHandler.swift; sourceTree = "<group>"; };
 		D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Factory.swift"; sourceTree = "<group>"; };
 		D24FB169249AD29100F149E0 /* SubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleView.swift; sourceTree = "<group>"; };
+		D256548D249C8EDA00EB9A81 /* DeliveryStateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStateHandler.swift; sourceTree = "<group>"; };
 		D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailViewController.swift; sourceTree = "<group>"; };
 		D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailProtocols.swift; sourceTree = "<group>"; };
 		D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailConfigurator.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */,
+				D256548D249C8EDA00EB9A81 /* DeliveryStateHandler.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				D27AA376249B1D7900BF84C4 /* BaseVIPERProtocols.swift in Sources */,
 				D24FB165249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift in Sources */,
 				D27AA37E249B737C00BF84C4 /* RouteView.swift in Sources */,
+				D256548E249C8EDA00EB9A81 /* DeliveryStateHandler.swift in Sources */,
 				D27AA378249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift in Sources */,
 				D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,

@@ -52,6 +52,8 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
     }
     
     func toggleFavBtn(isFav: Bool) {
+        interactor?.updateLocalDeliveryFavorite(status: isFav)
+        
         guard let btn = favoriteButton else { return }
         if isFav {
             btn.setTitle(removeFavoriteBtnText, for: .normal)
@@ -65,6 +67,6 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
     }
     
     @objc func favBtnTapped() {
-        interactor?.toggleDeliveryFavariteStatus()
+        interactor?.updateFavoriteBtnStatus()
     }
 }

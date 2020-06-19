@@ -7,13 +7,25 @@
 //
 
 class DeliveryDetailInteractor {
+    fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
+    fileprivate let deliveryId: String
     var presenter: DeliveryDetailPresenterInterface?
+    
+    init(deliveryId: String,
+        deliveryStatehandler: DeliveryStateHandlerInterface = DeliveryStateHandler()) {
+        self.deliveryId = deliveryId
+        self.deliveryStatehandler = deliveryStatehandler
+    }
 }
 
 extension DeliveryDetailInteractor: DeliveryDetailInteractorInterface {
-    func toggleDeliveryFavariteStatus() {
-        presenter?.toggleIsFav()
-        presenter?.updateFavBtn()
+    func updateLocalDeliveryFavorite(status: Bool) {
+        deliveryStatehandler?.updateFavoriteStatus(id: deliveryId, isFav: status)
+    }
+    
+    func updateFavoriteBtnStatus() {
+        presenter?.toggleIsFavorite()
+        presenter?.updateFavoriteBtn()
     }
     
     func setupView() {

@@ -10,7 +10,7 @@ import UIKit.UIViewController
 
 class DeliveryDetailConfigurator: Configurator {
     
-    weak var deilvery: Delivery?
+    var deilvery: Delivery
     
     init(deilvery: Delivery) {
         self.deilvery = deilvery
@@ -18,7 +18,7 @@ class DeliveryDetailConfigurator: Configurator {
     
     func configViewController() -> UIViewController {
         let viewController = DeliveryDetailViewController()
-        let interactor = DeliveryDetailInteractor()
+        let interactor = DeliveryDetailInteractor(deliveryId: deilvery.id)
         let presenter = DeliveryDetailPresenter()
 
         viewController.interactor = interactor

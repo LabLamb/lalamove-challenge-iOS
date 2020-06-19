@@ -19,7 +19,7 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
         btn.backgroundColor = .systemBlue
         btn.setTitleColor(.white, for: .normal)
         viewController?.setupFavBtn(favBtn: btn)
-        updateFavBtn()
+        updateFavoriteBtn()
     }
     
     func presentInfoView() {
@@ -27,12 +27,12 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
         viewController?.setupInfoView(infoView: infoView)
     }
     
-    func toggleIsFav() {
+    func toggleIsFavorite() {
         guard let delivery = delivery else { return }
         delivery.isFavorite = !delivery.isFavorite
     }
     
-    func updateFavBtn() {
+    func updateFavoriteBtn() {
         guard let delivery = delivery else { return }
         viewController?.toggleFavBtn(isFav: delivery.isFavorite)
     }

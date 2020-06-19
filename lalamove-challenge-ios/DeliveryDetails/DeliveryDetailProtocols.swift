@@ -16,12 +16,13 @@ protocol DeliveryDetailViewControllerInterface: BaseViewController {
 }
 
 protocol DeliveryDetailInteractorInterface: BaseInteractor {
-    func toggleDeliveryFavariteStatus()
+    func updateLocalDeliveryFavorite(status: Bool)
+    func updateFavoriteBtnStatus()
 }
 
 protocol DeliveryDetailPresenterInterface: BasePresenter {
     func presentFavoriteButton()
     func presentInfoView()
-    func updateFavBtn()
-    func toggleIsFav()
+    func updateFavoriteBtn()
+    func toggleIsFavorite()
 }
