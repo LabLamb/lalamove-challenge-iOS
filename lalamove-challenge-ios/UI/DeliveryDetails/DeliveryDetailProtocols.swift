@@ -26,4 +26,5 @@ protocol DeliveryDetailPresenterInterface: BasePresenterInterface {
     func presentInfoView()
     func updateFavoriteBtn()
     func toggleIsFavorite()
+    func removeCADisplayLink()
 }

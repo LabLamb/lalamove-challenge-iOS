@@ -11,10 +11,12 @@ import UIKit
 class DeliveryDetailPresenter {
     var delivery: Delivery
     weak var viewController: DeliveryDetailViewControllerInterface?
+    private var displayLink: CADisplayLink?
     
     init(delivery: Delivery) {
         self.delivery = delivery
-        CADisplayLink(target: self, selector: #selector(self.updateInfoView)).add(to: .main, forMode: .default)
+        displayLink = CADisplayLink(target: self, selector: #selector(self.updateInfoView))
+        displayLink?.add(to: .main, forMode: .default)
     }
 }
 
@@ -51,6 +53,10 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
                                                    toAddress: delivery.to,
                                                    goodsImage: img,
                                                    deliveryFee: delivery.fee)
+    }
+    
+    func removeCADisplayLink() {
+        displayLink?.invalidate()
     }
     
     @objc func updateInfoView() {

@@ -16,6 +16,10 @@ class DeliveryDetailInteractor {
         self.deliveryId = deliveryId
         self.deliveryStatehandler = deliveryStatehandler
     }
+    
+    deinit {
+        presenter?.removeCADisplayLink()
+    }
 }
 
 extension DeliveryDetailInteractor: DeliveryDetailInteractorInterface {

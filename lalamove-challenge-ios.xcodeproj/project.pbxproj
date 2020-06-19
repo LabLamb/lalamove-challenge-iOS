@@ -17,7 +17,6 @@
 		D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */; };
 		D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D10249A61E2008F0C44 /* Assets.xcassets */; };
 		D24A6D14249A61E2008F0C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */; };
-		D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */; };
 		D24E579C249CB4E6000B1E3A /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */; };
 		D24E579E249CB4F1000B1E3A /* DeliveryFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */; };
 		D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */; };
@@ -66,8 +65,6 @@
 		D24A6D13249A61E2008F0C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D24A6D15249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lalamove-challenge-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lalamove_challenge_iosUITests.swift; sourceTree = "<group>"; };
-		D24A6D20249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
 		D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFeeView.swift; sourceTree = "<group>"; };
 		D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				D24A6D06249A61E1008F0C44 /* lalamove-challenge-ios */,
-				D24A6D1D249A61E2008F0C44 /* lalamove-challenge-iosUITests */,
 				D24A6D05249A61E1008F0C44 /* Products */,
 				548C880990F634509CCB5799 /* Pods */,
 				9F9943AB5984C4D29246A1CE /* Frameworks */,
@@ -182,15 +178,6 @@
 				D24A6D15249A61E2008F0C44 /* Info.plist */,
 			);
 			path = "lalamove-challenge-ios";
-			sourceTree = "<group>";
-		};
-		D24A6D1D249A61E2008F0C44 /* lalamove-challenge-iosUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */,
-				D24A6D20249A61E2008F0C44 /* Info.plist */,
-			);
-			path = "lalamove-challenge-iosUITests";
 			sourceTree = "<group>";
 		};
 		D24FB15A249A76CA00F149E0 /* SubViews */ = {
@@ -455,7 +442,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
