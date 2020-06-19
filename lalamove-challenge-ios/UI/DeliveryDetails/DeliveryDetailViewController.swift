@@ -10,7 +10,7 @@ import SnapKit
 
 class DeliveryDetailViewController: UIViewController {
     
-    struct UIConstants {
+    private struct UIConstants {
         static let buttonMargin = 25
     }
     
@@ -23,6 +23,7 @@ class DeliveryDetailViewController: UIViewController {
     var interactor: DeliveryDetailInteractorInterface?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.view.backgroundColor = .white
         interactor?.setupView()
     }
@@ -44,9 +45,7 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
         self.view.addSubview(infoView)
         infoView.snp.makeConstraints { make in
             make.top.equalTo(self.view.layoutMarginsGuide.snp.top)
-            make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-            
+            make.left.right.bottom.equalToSuperview()
         }
         self.infoView = infoView
     }
@@ -68,5 +67,9 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
     
     @objc func favBtnTapped() {
         interactor?.updateFavoriteBtnStatus()
+    }
+    
+    func updateInfoView(config: DeliveryDetailInfoViewConfiguration) {
+        infoView?.setupData(config: config)
     }
 }

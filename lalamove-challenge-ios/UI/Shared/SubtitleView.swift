@@ -41,16 +41,17 @@ class SubtitleView: UIView {
     }
     
     fileprivate func setupLayout() {
-        self.addSubview(subtitle)
+        addSubview(subtitle)
         subtitle.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(subtitle.font.lineHeight)
         }
         
-        self.addSubview(title)
+        addSubview(title)
         title.snp.makeConstraints { make in
             make.top.equalTo(subtitle.snp.bottom)
-            make.left.equalToSuperview()
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(title.font.lineHeight)
         }
     }
 }

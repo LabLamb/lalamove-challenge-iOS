@@ -10,7 +10,7 @@ import SnapKit
 
 class DeliveryMasterCell: UITableViewCell {
     
-    struct UIConstants {
+    private struct UIConstants {
         static let goodsImageLeftOffset = 10
         static let fromToLabelOffsetFromLeft = 15
         static let fromToLabelOffsetFromTopBot = 15
@@ -30,8 +30,8 @@ class DeliveryMasterCell: UITableViewCell {
     
     lazy var favImage: UILabel = {
         let result = UILabel()
-        result.text = "♥️"
-        result.font = UIFont(name: "AppleColorEmoji", size: 30)
+        result.text = "❤️"
+        result.font = UIFont(name: "AppleColorEmoji", size: 25)
         return result
     }()
     
@@ -50,6 +50,7 @@ class DeliveryMasterCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         goodsImageView.image = nil
         fromLabel.updateText(titleText: "N/A")
         toLabel.updateText(titleText: "N/A")
@@ -66,8 +67,7 @@ class DeliveryMasterCell: UITableViewCell {
         
         contentView.addSubview(favImage)
         favImage.snp.makeConstraints { make in
-            make.right.equalTo(goodsImageView.snp.right)
-            make.bottom.equalTo(goodsImageView.snp.bottom)
+            make.top.right.equalToSuperview()
         }
         
         contentView.addSubview(priceLabel)
@@ -80,7 +80,6 @@ class DeliveryMasterCell: UITableViewCell {
         fromLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(UIConstants.fromToLabelOffsetFromTopBot)
             make.left.equalTo(self.goodsImageView.snp.right).offset(UIConstants.fromToLabelOffsetFromLeft)
-            make.right.equalTo(self.priceLabel.snp.left)
             make.height.equalTo(fromLabel.titleFont.lineHeight + fromLabel.subtitleFont.lineHeight)
         }
         
@@ -88,7 +87,6 @@ class DeliveryMasterCell: UITableViewCell {
         toLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-UIConstants.fromToLabelOffsetFromTopBot)
             make.left.equalTo(self.goodsImageView.snp.right).offset(UIConstants.fromToLabelOffsetFromLeft)
-            make.right.equalTo(self.priceLabel.snp.left)
             make.height.equalTo(toLabel.titleFont.lineHeight + toLabel.subtitleFont.lineHeight)
         }
     }

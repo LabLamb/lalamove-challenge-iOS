@@ -9,8 +9,13 @@
 import UIKit
 
 class DeliveryDetailPresenter {
-    weak var delivery: Delivery?
+    var delivery: Delivery
     weak var viewController: DeliveryDetailViewControllerInterface?
+    
+    init(delivery: Delivery) {
+        self.delivery = delivery
+        CADisplayLink(target: self, selector: #selector(self.updateInfoView)).add(to: .main, forMode: .default)
+    }
 }
 
 extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
@@ -23,21 +28,33 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
     }
     
     func presentInfoView() {
-        let infoView = DeliveryDetailInfoView()
+        let config = getInfoViewConfig()
+        let infoView = DeliveryDetailInfoView(config: config)
         viewController?.setupInfoView(infoView: infoView)
     }
     
     func toggleIsFavorite() {
-        guard let delivery = delivery else { return }
         delivery.isFavorite = !delivery.isFavorite
     }
     
     func updateFavoriteBtn() {
-        guard let delivery = delivery else { return }
         viewController?.toggleFavBtn(isFav: delivery.isFavorite)
     }
     
     func presentNavigationTitle() {
         viewController?.setupNavigationBarTitle()
+    }
+    
+    func getInfoViewConfig() -> DeliveryDetailInfoViewConfiguration {
+        let img = delivery.getGoodsImage() ?? UIImage()
+        return DeliveryDetailInfoViewConfiguration(fromAddress: delivery.from,
+                                                   toAddress: delivery.to,
+                                                   goodsImage: img,
+                                                   deliveryFee: delivery.fee)
+    }
+    
+    @objc func updateInfoView() {
+        let config = getInfoViewConfig()
+        viewController?.updateInfoView(config: config)
     }
 }

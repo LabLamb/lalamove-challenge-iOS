@@ -13,6 +13,7 @@ protocol DeliveryDetailViewControllerInterface: BaseViewControllerInterface {
     func toggleFavBtn(isFav: Bool)
     func setupFavBtn(favBtn: UIButton)
     func setupInfoView(infoView: DeliveryDetailInfoView)
+    func updateInfoView(config: DeliveryDetailInfoViewConfiguration)
 }
 
 protocol DeliveryDetailInteractorInterface: BaseInteractorInterface {

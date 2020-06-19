@@ -31,5 +31,6 @@ extension DeliveryDetailInteractor: DeliveryDetailInteractorInterface {
     func setupView() {
         presenter?.presentInfoView()
         presenter?.presentFavoriteButton()
+        presenter?.presentNavigationTitle()
     }
 }

@@ -18,6 +18,8 @@
 		D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D10249A61E2008F0C44 /* Assets.xcassets */; };
 		D24A6D14249A61E2008F0C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */; };
 		D24A6D1F249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */; };
+		D24E579C249CB4E6000B1E3A /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */; };
+		D24E579E249CB4F1000B1E3A /* DeliveryFeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */; };
 		D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */; };
 		D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */; };
 		D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */; };
@@ -66,6 +68,8 @@
 		D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lalamove-challenge-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24A6D1E249A61E2008F0C44 /* lalamove_challenge_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lalamove_challenge_iosUITests.swift; sourceTree = "<group>"; };
 		D24A6D20249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
+		D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFeeView.swift; sourceTree = "<group>"; };
 		D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterViewController.swift; sourceTree = "<group>"; };
 		D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterInteractor.swift; sourceTree = "<group>"; };
 		D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterCell.swift; sourceTree = "<group>"; };
@@ -171,8 +175,7 @@
 				D204DBB0249A710C003F3CE6 /* APIClient */,
 				D24FB166249AA6DE00F149E0 /* LocalStorage */,
 				D204DBA4249A6644003F3CE6 /* Model */,
-				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
-				D27AA36D249B1C0D00BF84C4 /* DeliveryDetails */,
+				D256548F249CA89F00EB9A81 /* UI */,
 				D24FB163249A8E0000F149E0 /* Extension */,
 				D24A6D10249A61E2008F0C44 /* Assets.xcassets */,
 				D24A6D12249A61E2008F0C44 /* LaunchScreen.storyboard */,
@@ -194,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */,
-				D24FB169249AD29100F149E0 /* SubtitleView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -216,6 +218,24 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
+		D256548F249CA89F00EB9A81 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D2565490249CA8A500EB9A81 /* Shared */,
+				D288F2FA249A6295003EAAA3 /* DeliveryMaster */,
+				D27AA36D249B1C0D00BF84C4 /* DeliveryDetails */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D2565490249CA8A500EB9A81 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D24FB169249AD29100F149E0 /* SubtitleView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		D27AA36D249B1C0D00BF84C4 /* DeliveryDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +254,8 @@
 			children = (
 				D27AA379249B62F200BF84C4 /* DeliveryDetailInfoView.swift */,
 				D27AA37D249B737C00BF84C4 /* RouteView.swift */,
+				D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */,
+				D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -402,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27AA37C249B63E500BF84C4 /* DeliveryDetailPresenter.swift in Sources */,
+				D24E579E249CB4F1000B1E3A /* DeliveryFeeView.swift in Sources */,
 				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
 				D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */,
 				D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */,
@@ -416,6 +439,7 @@
 				D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */,
 				D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */,
 				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,
+				D24E579C249CB4E6000B1E3A /* ImageGalleryView.swift in Sources */,
 				D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */,
 				D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */,
 				D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */,

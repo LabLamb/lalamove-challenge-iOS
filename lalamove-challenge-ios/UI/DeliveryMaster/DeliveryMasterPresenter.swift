@@ -9,9 +9,6 @@
 import UIKit
 
 class DeliveryMasterPresenter: NSObject {
-    
-    private let genericErrorMessage = "Fail to fetch data from server" // Normally this should be a key for localized string
-    
     var deliveries: [Delivery] = []
     
     weak var viewController: DeliveryMasterViewControllerInterface?

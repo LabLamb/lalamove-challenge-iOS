@@ -19,7 +19,7 @@ class DeliveryDetailConfigurator: Configurator {
     func configViewController() -> UIViewController {
         let viewController = DeliveryDetailViewController()
         let interactor = DeliveryDetailInteractor(deliveryId: deilvery.id)
-        let presenter = DeliveryDetailPresenter()
+        let presenter = DeliveryDetailPresenter(delivery: deilvery)
 
         viewController.interactor = interactor
         interactor.presenter = presenter
