@@ -26,9 +26,9 @@ class SubtitleView: UIView {
         return result
     }()
     
-    init() {
+    init(subtitle subtitleText: String) {
         super.init(frame: .zero)
-        self.backgroundColor = .clear
+        subtitle.text = subtitleText
         setupLayout()
     }
     
@@ -36,9 +36,8 @@ class SubtitleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateText(titleText: String, subtitleText: String) {
+    func updateText(titleText: String) {
         title.text = titleText
-        subtitle.text = subtitleText
     }
     
     fileprivate func setupLayout() {

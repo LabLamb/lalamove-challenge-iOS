@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7AD2BBF19F7142EBDE3B9E11 /* libPods-lalamove-challenge-iosUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */; };
 		B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */; };
-		D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */; };
 		D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA5249A66DE003F3CE6 /* Delivery.swift */; };
 		D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */; };
 		D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */; };
@@ -55,7 +54,6 @@
 		41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.release.xcconfig"; sourceTree = "<group>"; };
 		56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-iosUITests/Pods-lalamove-challenge-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverySummary.swift; sourceTree = "<group>"; };
 		D204DBA5249A66DE003F3CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenter.swift; sourceTree = "<group>"; };
 		D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAPIClient.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 		D204DBA4249A6644003F3CE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */,
 				D204DBA5249A66DE003F3CE6 /* Delivery.swift */,
 			);
 			path = Model;
@@ -436,7 +433,6 @@
 				D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
 				D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */,
-				D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */,
 				D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */,
 				D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */,
 				D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */,

@@ -28,8 +28,15 @@ class Delivery: Codable {
         self.id = json["id"].stringValue
         self.routeStart = json["route"].dictionaryValue["start"]?.stringValue ?? ""
         self.routeEnd = json["route"].dictionaryValue["end"]?.stringValue ?? ""
-        self.deliveryFee = Double(json["deliveryFee"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
-        self.surcharge = Double(json["surcharge"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
+        
+        let deliveryFeeString = json["deliveryFee"].stringValue
+        let strippedDeliveryFee = deliveryFeeString.replacingOccurrences(of: "$", with: "")
+        
+        let surchargeString = json["surcharge"].stringValue
+        let strippedSurcharge = surchargeString.replacingOccurrences(of: "$", with: "")
+        
+        self.deliveryFee = Double(strippedDeliveryFee) ?? 0.00
+        self.surcharge = Double(strippedSurcharge) ?? 0.00
         self.sortingNumber = sortingNumber
     }
     
@@ -39,6 +46,14 @@ class Delivery: Codable {
             let image = UIImage(data: data) else { return nil }
         return image
     }
+}
+
+protocol DeliverySummary {
+    var price: Double { get }
+    var from: String { get }
+    var to: String { get }
+    var isFav: Bool { get }
+    var goodsPic: UIImage? { get }
 }
 
 extension Delivery: DeliverySummary {
