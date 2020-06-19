@@ -18,14 +18,14 @@ class DeliveryDetailConfigurator: Configurator {
     
     func configViewController() -> UIViewController {
         let viewController = DeliveryDetailViewController()
-//        let interactor = DeliveryDetailInteractor()
-//        let presenter = DeliveryDetailPresenter()
-//
-//        viewController.interactor = interactor
-//        interactor.presenter = presenter
-//
-//        presenter.router = router
-//        presenter.viewController = viewController
+        let interactor = DeliveryDetailInteractor()
+        let presenter = DeliveryDetailPresenter()
+
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        
+        presenter.viewController = viewController
+        presenter.delivery = deilvery
         
         return viewController
     }

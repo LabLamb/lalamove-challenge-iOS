@@ -9,11 +9,10 @@
 import Foundation
 import SwiftyJSON
 
-class Delivery {
+class Delivery: Codable {
     let id: String
-    let remarks: String
     var isFavorite = false
-    var goodsPicData: Data? = nil
+    var goodsPicData: String?
     let routeStart: String
     let routeEnd: String
     private let deliveryFee: Double
@@ -23,19 +22,21 @@ class Delivery {
             return deliveryFee + surcharge
         }
     }
+    let sortingNumber: Int
     
-    init(json: JSON) { // Not going to use object mapping libraries because this app only has 1 model
+    init(sortingNumber: Int, json: JSON) { // Not going to use object mapping libraries because this app only has 1 model
         self.id = json["id"].stringValue
-        self.remarks = json["remark"].stringValue
         self.routeStart = json["route"].dictionaryValue["start"]?.stringValue ?? ""
         self.routeEnd = json["route"].dictionaryValue["end"]?.stringValue ?? ""
         self.deliveryFee = Double(json["deliveryFee"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
         self.surcharge = Double(json["surcharge"].stringValue.replacingOccurrences(of: "$", with: "")) ?? 0.00
+        self.sortingNumber = sortingNumber
     }
     
     func getGoodsImage() -> UIImage? {
-        guard let goodsPicData = goodsPicData,
-            let image = UIImage(data: goodsPicData) else { return nil }
+        guard let goodPicDataString = goodsPicData,
+            let data = Data(base64Encoded: goodPicDataString),
+            let image = UIImage(data: data) else { return nil }
         return image
     }
 }

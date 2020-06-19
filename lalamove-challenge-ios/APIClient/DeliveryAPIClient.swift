@@ -28,6 +28,7 @@ protocol DeliveryAPIClientInterface {
 class DeliveryAPIClient {
     private let deliverAPI = "https://mock-api-mobile.dev.lalamove.com/v2/deliveries" // Normally would keep it in a .json file
     private let requestQueueHint = "DeliveryRequestQueue"
+    private let imageQueueHint = "DeliveryImageRequestQueue"
 }
 
 extension DeliveryAPIClient: DeliveryAPIClientInterface {
@@ -42,10 +43,8 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
                     "limit": paging.limit]
         }()
         
-        AF.request(deliverAPI,
-                   parameters: param)
-            .responseJSON(queue: .init(label: requestQueueHint),
-                          completionHandler: { [weak self] res in
+        AF.request(deliverAPI, parameters: param)
+            .responseJSON(queue: .init(label: requestQueueHint), completionHandler: { [weak self] res in
                 guard let self = self else {
                     onError(.apiClientDeinit)
                     return
@@ -69,16 +68,14 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
         onResponse(jsonArr)
     }
     
-    func fetchImageFromLink(imgUrl: String,
-                            onResponse: @escaping (UIImage) -> ()) {
-        AF.request(imgUrl, method: .get)
-            .responseImage(completionHandler: { res in
-                switch res.result {
-                case .success(let image):
-                    onResponse(image)
-                case .failure:
-                    break
-                }
+    func fetchImageFromLink(imgUrl: String, onResponse: @escaping (UIImage) -> ()) {
+        AF.request(imgUrl, method: .get).responseImage(queue: .init(label: imageQueueHint), completionHandler: { res in
+            switch res.result {
+            case .success(let image):
+                onResponse(image)
+            case .failure:
+                break
+            }
         })
     }
 }

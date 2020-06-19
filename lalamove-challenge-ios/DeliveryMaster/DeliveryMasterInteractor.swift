@@ -11,15 +11,18 @@ import SwiftyJSON
 
 class DeliveryMasterInteractor {
     
-    private let localStorageAsyncHint = "DeliveryLocalStorageQueue"
-    private let perPageLimit = 20
+    typealias GoodsImgFetchDetails = (id: String, url: String)
     
-    var apiClient: DeliveryAPIClientInterface?
+    fileprivate let localStorageAsyncHint = "DeliveryLocalStorageQueue"
+    fileprivate let perPageLimit = 20
+    
+    fileprivate var apiClient: DeliveryAPIClientInterface?
+    fileprivate var localStorageHandler: DeliveryLocalStorageHandlerInterface?
+    
     var presenter: DeliveryMasterPresenterInterface?
-    var localStorageHandler: LocalStorageHandlerInterface?
     
     init(apiClient: DeliveryAPIClientInterface = DeliveryAPIClient(),
-         localStorageHandler: LocalStorageHandlerInterface = LocalStorageHandler()) {
+         localStorageHandler: DeliveryLocalStorageHandlerInterface = DeliveryLocalStorageHandler()) {
         self.apiClient = apiClient
         self.localStorageHandler = localStorageHandler
     }
@@ -32,77 +35,73 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
         presenter?.presentNavigationTitle()
     }
     
-    func initialFetch() {
-        let jsons = fetchDeliveryJSONsFromLocal()
-        let deliveriesInLocal = makeDelivers(jsons: jsons)
-        
-        presenter?.updateDeliveries(incomingDeliveries: deliveriesInLocal)
-        fetchDeliveries()
-    }
-    
     func showDeliveryDetails(index: Int) {
         presenter?.presentDeliveryDetails(index: index)
     }
     
     func fetchDeliveries() {
-        presenter?.refreshTableView()
-        fetchDeliveriesFromAPI()
-    }
-    
-    fileprivate func fetchDeliveriesFromAPI() {
+        presenter?.presentStartingFetchAnimation()
         let pagingInfo = presenter?.getPagingInfo(limit: perPageLimit)
         apiClient?.fetchDeliveriesFromServer(paging: pagingInfo,
                                              onResponse: deliveryResponseHandler,
                                              onError: deliveryErrorHandler)
     }
     
-    fileprivate func fetchDeliveryJSONsFromLocal() -> [JSON] {
-        return localStorageHandler?.fetchDeliveriesFromLocal() ?? []
-    }
-    
-    fileprivate func deliveryResponseHandler(jsonArr: [JSON]) {
+    func deliveryResponseHandler(jsonArr: [JSON]) {
         guard let presenter = self.presenter else { return }
         
-        let deliveries = makeDelivers(jsons: jsonArr)
+        let output = makeDeliversAndImgDetails(with: jsonArr)
+        let deliveries = output.delivers
+        let imgDetails = output.imgDetails
         
-        if presenter.getPagingInfo(limit: perPageLimit).offset == 0 {
-            cacheDataToLocal(jsonArr: jsonArr)
-        }
+        let batchId = getBatchNumber()
+        localStorageHandler?.storeDeliveriesJSON(batch: batchId, deliveries: deliveries)
+        updateDeliveryGoodPictures(batch: batchId, imgDetails: imgDetails)
         
         presenter.updateDeliveries(incomingDeliveries: deliveries)
     }
     
-    fileprivate func deliveryErrorHandler(error: DeliveryAPICallError) {
+    func deliveryErrorHandler(error: DeliveryAPICallError) {
         guard let presenter = self.presenter else { return }
-        presenter.presentAPIError()
+        guard let localStorageHandler = localStorageHandler else { return }
+        let deliveries = localStorageHandler.fetchDeliveriesFromLocal(batch: getBatchNumber())
+        presenter.updateDeliveries(incomingDeliveries: deliveries)
+        presenter.presentCompleteFetchAnimation()
     }
     
-    fileprivate func cacheDataToLocal(jsonArr: [JSON]) {
-        DispatchQueue.init(label: localStorageAsyncHint).async { [weak self] in
-            guard let self = self else { return }
-            for i in 0..<jsonArr.count {
-                if let data = try? jsonArr[i].rawData() {
-                    self.localStorageHandler?.storeDeliveryRawJSONToLocal(id: String(i), data: data, onError: { _ in })
-                }
+    func updateDeliveryGoodPictures(batch: Int, imgDetails: [GoodsImgFetchDetails]) {
+        for imgDetail in imgDetails {
+            
+            let updater: (UIImage) -> () = { image in
+                guard let data = image.pngData() else { return }
+                self.presenter?.updateDeliveryImage(with: imgDetail.id, image: image)
+                self.localStorageHandler?.updateImageData(with: imgDetail.id, batch: batch, imageData: data)
             }
+            
+            apiClient?.fetchImageFromLink(imgUrl: imgDetail.url, onResponse: updater)
         }
     }
     
-    fileprivate func makeDelivers(jsons: [JSON]) -> [Delivery] {
-        var result = [Delivery]()
+    func makeDeliversAndImgDetails(with jsons: [JSON]) -> (delivers: [Delivery], imgDetails: [GoodsImgFetchDetails]) {
+        var deliveries = [Delivery]()
+        var imageDetails = [(GoodsImgFetchDetails)]()
         
-        for json in jsons {
-            let delivery = Delivery(json: json)
-            let imgUrl = json["goodsPicture"].stringValue
-            apiClient?.fetchImageFromLink(imgUrl: imgUrl,
-                                          onResponse: { [weak self] image in
-                                            guard let self = self else { return }
-                                            delivery.goodsPicData = image.pngData()
-                                            self.presenter?.updateDeliveryImage(with: delivery.id, image: image)
-            })
-            result.append(delivery)
+        for i in 0..<jsons.count {
+            let delivery = Delivery(sortingNumber: i, json: jsons[i])
+            deliveries.append(delivery)
+            
+            let id = jsons[i]["id"].stringValue
+            let imgUrl = jsons[i]["goodsPicture"].stringValue
+            imageDetails.append((id: id, url: imgUrl))
         }
         
-        return result
+        return (delivers: deliveries, imgDetails: imageDetails)
+    }
+    
+    func getBatchNumber() -> Int {
+        guard let presenter = presenter else { return 0 }
+        let offset = presenter.getPagingInfo(limit: self.perPageLimit).offset
+        let batchNumber = Double(offset) / Double(self.perPageLimit)
+        return Int(ceil(batchNumber))
     }
 }

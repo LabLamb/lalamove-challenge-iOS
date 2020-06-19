@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7AD2BBF19F7142EBDE3B9E11 /* libPods-lalamove-challenge-iosUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */; };
 		B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */; };
-		D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA0249A6592003F3CE6 /* Configurator.swift */; };
 		D204DBA3249A663F003F3CE6 /* DeliverySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */; };
 		D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA5249A66DE003F3CE6 /* Delivery.swift */; };
 		D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */; };
@@ -25,13 +24,17 @@
 		D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */; };
 		D24FB160249A8B1F00F149E0 /* UITableView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */; };
 		D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB161249A8DF600F149E0 /* Number+Format.swift */; };
-		D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */; };
+		D24FB165249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */; };
 		D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */; };
 		D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB169249AD29100F149E0 /* SubtitleView.swift */; };
 		D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */; };
 		D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */; };
 		D27AA374249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */; };
 		D27AA376249B1D7900BF84C4 /* BaseVIPERProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */; };
+		D27AA378249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA377249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift */; };
+		D27AA37A249B62F200BF84C4 /* DeliveryDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA379249B62F200BF84C4 /* DeliveryDetailInfoView.swift */; };
+		D27AA37C249B63E500BF84C4 /* DeliveryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA37B249B63E500BF84C4 /* DeliveryDetailPresenter.swift */; };
+		D27AA37E249B737C00BF84C4 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA37D249B737C00BF84C4 /* RouteView.swift */; };
 		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
 		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +55,6 @@
 		41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.release.xcconfig"; sourceTree = "<group>"; };
 		56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		86997527ECB47A32F90A8FF9 /* Pods-lalamove-challenge-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-iosUITests/Pods-lalamove-challenge-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D204DBA0249A6592003F3CE6 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		D204DBA2249A663F003F3CE6 /* DeliverySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliverySummary.swift; sourceTree = "<group>"; };
 		D204DBA5249A66DE003F3CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenter.swift; sourceTree = "<group>"; };
@@ -72,13 +74,17 @@
 		D24FB15B249A76DA00F149E0 /* DeliveryMasterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterCell.swift; sourceTree = "<group>"; };
 		D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Refresh.swift"; sourceTree = "<group>"; };
 		D24FB161249A8DF600F149E0 /* Number+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
-		D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageHandler.swift; sourceTree = "<group>"; };
+		D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryLocalStorageHandler.swift; sourceTree = "<group>"; };
 		D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Factory.swift"; sourceTree = "<group>"; };
 		D24FB169249AD29100F149E0 /* SubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleView.swift; sourceTree = "<group>"; };
 		D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailViewController.swift; sourceTree = "<group>"; };
 		D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailProtocols.swift; sourceTree = "<group>"; };
 		D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailConfigurator.swift; sourceTree = "<group>"; };
 		D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIPERProtocols.swift; sourceTree = "<group>"; };
+		D27AA377249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailInteractor.swift; sourceTree = "<group>"; };
+		D27AA379249B62F200BF84C4 /* DeliveryDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailInfoView.swift; sourceTree = "<group>"; };
+		D27AA37B249B63E500BF84C4 /* DeliveryDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailPresenter.swift; sourceTree = "<group>"; };
+		D27AA37D249B737C00BF84C4 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
 		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
 		DEB7A6905BC718294FB07009 /* libPods-lalamove-challenge-iosUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-iosUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +172,6 @@
 			children = (
 				D24A6D07249A61E1008F0C44 /* AppDelegate.swift */,
 				D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */,
-				D204DBA0249A6592003F3CE6 /* Configurator.swift */,
 				D27AA375249B1D7900BF84C4 /* BaseVIPERProtocols.swift */,
 				D204DBB0249A710C003F3CE6 /* APIClient */,
 				D24FB166249AA6DE00F149E0 /* LocalStorage */,
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D24FB161249A8DF600F149E0 /* Number+Format.swift */,
+				D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */,
 				D24FB167249AACC200F149E0 /* UIAlertController+Factory.swift */,
 			);
 			path = Extension;
@@ -211,7 +217,7 @@
 		D24FB166249AA6DE00F149E0 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				D24FB164249AA6DA00F149E0 /* LocalStorageHandler.swift */,
+				D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 				D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */,
 				D27AA373249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift */,
 				D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */,
+				D27AA377249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift */,
+				D27AA37B249B63E500BF84C4 /* DeliveryDetailPresenter.swift */,
 				D27AA370249B1C3900BF84C4 /* SubViews */,
 			);
 			path = DeliveryDetails;
@@ -230,6 +238,8 @@
 		D27AA370249B1C3900BF84C4 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				D27AA379249B62F200BF84C4 /* DeliveryDetailInfoView.swift */,
+				D27AA37D249B737C00BF84C4 /* RouteView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -243,7 +253,6 @@
 				D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */,
 				D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */,
 				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
-				D24FB15F249A8B1F00F149E0 /* UITableView+Refresh.swift */,
 				D24FB15A249A76CA00F149E0 /* SubViews */,
 			);
 			path = DeliveryMaster;
@@ -416,11 +425,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27AA37C249B63E500BF84C4 /* DeliveryDetailPresenter.swift in Sources */,
 				D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */,
 				D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */,
 				D24FB15C249A76DA00F149E0 /* DeliveryMasterCell.swift in Sources */,
 				D27AA376249B1D7900BF84C4 /* BaseVIPERProtocols.swift in Sources */,
-				D24FB165249AA6DA00F149E0 /* LocalStorageHandler.swift in Sources */,
+				D24FB165249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift in Sources */,
+				D27AA37E249B737C00BF84C4 /* RouteView.swift in Sources */,
+				D27AA378249B5F8F00BF84C4 /* DeliveryDetailInteractor.swift in Sources */,
 				D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */,
 				D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */,
 				D24FB157249A749400F149E0 /* DeliveryMasterViewController.swift in Sources */,
@@ -433,9 +445,9 @@
 				D24FB168249AACC200F149E0 /* UIAlertController+Factory.swift in Sources */,
 				D24FB159249A74B700F149E0 /* DeliveryMasterInteractor.swift in Sources */,
 				D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */,
-				D204DBA1249A6592003F3CE6 /* Configurator.swift in Sources */,
 				D27AA374249B1CE400BF84C4 /* DeliveryDetailConfigurator.swift in Sources */,
 				D24FB160249A8B1F00F149E0 /* UITableView+Refresh.swift in Sources */,
+				D27AA37A249B62F200BF84C4 /* DeliveryDetailInfoView.swift in Sources */,
 				D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */,
 				D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */,
 			);

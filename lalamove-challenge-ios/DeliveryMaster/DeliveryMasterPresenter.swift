@@ -14,7 +14,7 @@ class DeliveryMasterPresenter: NSObject {
     
     var deliveries: [Delivery] = []
     
-    var tableView: (Refreashable & TableViewRefreashable)?
+    var tableView: Refreashable?
     weak var viewController: (DeliveryMasterViewControllerInterface & UITableViewDelegate)?
     var router: DeliveryMasterRouterInterface?
 }
@@ -22,21 +22,8 @@ class DeliveryMasterPresenter: NSObject {
 extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     func updateDeliveryImage(with id: String, image: UIImage) {
         guard let index = deliveries.firstIndex(where: { $0.id == id }) else { return }
-        tableView?.refresh(with: image, at: index)
-    }
-    
-    func refreshTableView() {
+        deliveries[index].goodsPicData = image.pngData()?.base64EncodedString()
         tableView?.refresh()
-    }
-    
-    func presentAPIError() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let alert = UIAlertController.makeGenericAPIError(message: self.genericErrorMessage)
-            self.viewController?.showAPIError(alertViewController: alert)
-            self.viewController?.isRequestingMoreData = false
-            self.tableView?.refresh()
-        }
     }
     
     func getPagingInfo(limit: Int) -> DeliveryPagingInfo {
@@ -57,27 +44,8 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     }
     
     func updateDeliveries(incomingDeliveries: [Delivery]) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            
-            var isOverlap = false
-            
-            for d in incomingDeliveries {
-                if self.deliveries.contains(where: { $0.id == d.id }) {
-                    isOverlap = true
-                }
-            }
-            
-            if isOverlap && self.deliveries.count <= 20 {
-                self.deliveries = incomingDeliveries
-            } else {
-                self.deliveries.append(contentsOf: incomingDeliveries)
-            }
-
-            self.tableView?.refresh()
-            self.viewController?.isRequestingMoreData = false
-        }
-        
+        deliveries.append(contentsOf: incomingDeliveries)
+        presentCompleteFetchAnimation()
     }
     
     func presentDeliveryDetails(index: Int) {
@@ -86,8 +54,17 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
             let configurator = DeliveryDetailConfigurator(deilvery: delivery)
             let deliveryDetVC = configurator.configViewController()
             router?.routeToDetailPage(viewController: deliveryDetVC)
-            
         }
+    }
+    
+    func presentCompleteFetchAnimation() {
+        viewController?.stopRequestAnimation()
+        tableView?.refresh()
+    }
+    
+    func presentStartingFetchAnimation() {
+        viewController?.startRequestAnimation()
+        tableView?.refresh()
     }
 }
 

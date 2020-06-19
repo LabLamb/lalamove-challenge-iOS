@@ -13,23 +13,27 @@ class DeliveryMasterViewController: UIViewController {
     fileprivate let navTitle = "My Deliveries"
     fileprivate var isLoading = true
     var interactor: DeliveryMasterInteractorInterface?
+    weak var tableView: UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.initialFetch()
+        interactor?.fetchDeliveries()
         interactor?.setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool){
+        tableView?.reloadData()
     }
 }
 
 extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     
-    var isRequestingMoreData: Bool {
-        get {
-            return isLoading
-        }
-        set {
-            isLoading = newValue
-        }
+    func startRequestAnimation() {
+        isLoading = true
+    }
+    
+    func stopRequestAnimation() {
+        isLoading = false
     }
     
     func setupNavigationBarTitle() {
@@ -37,24 +41,12 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     }
     
 
-    func setupTableView(tableView: UIView) {
+    func setupTableView(tableView: UITableView) {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
-    }
-    
-    func showAPIError(alertViewController: UIViewController) {
-        if viewIfLoaded?.window != nil {
-            present(alertViewController, animated: true)
-        }
-    }
-    
-    fileprivate func startLoadingIfNeeded() {
-        if !isLoading {
-            isLoading = true
-            self.interactor?.fetchDeliveries()
-        }
+        self.tableView = tableView
     }
 }
 
@@ -83,7 +75,9 @@ extension DeliveryMasterViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if maximumOffset - currentOffset <= 0 {
-            startLoadingIfNeeded()
+            if !isLoading {
+                interactor?.fetchDeliveries()
+            }
         }
     }
 }

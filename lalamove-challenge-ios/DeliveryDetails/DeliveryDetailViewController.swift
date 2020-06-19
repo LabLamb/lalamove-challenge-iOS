@@ -9,13 +9,48 @@
 import SnapKit
 
 class DeliveryDetailViewController: UIViewController {
+    
+    struct UIConstants {
+        static let buttonMargin = 25
+    }
+    
     fileprivate let navTitle = "Delivery Details"
     private let addFavoriteBtnText = "Add to Favorite ❤️"
     private let removeFavoriteBtnText = "Remove from Favorite 💔"
-    private var favoriteButton: UIButton?
+    
+    private weak var infoView: DeliveryDetailInfoView?
+    private weak var favoriteButton: UIButton?
+    var interactor: DeliveryDetailInteractorInterface?
+    
+    override func viewDidLoad() {
+        self.view.backgroundColor = .white
+        interactor?.setupView()
+    }
 }
 
 extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
+    func setupFavBtn(favBtn: UIButton) {
+        self.view.addSubview(favBtn)
+        favBtn.snp.makeConstraints { make in
+            make.bottom.right.equalToSuperview().offset(-UIConstants.buttonMargin)
+            make.left.equalToSuperview().offset(UIConstants.buttonMargin)
+            make.height.equalToSuperview().dividedBy(20)
+        }
+        favoriteButton = favBtn
+        favoriteButton?.addTarget(self, action: #selector(favBtnTapped), for: .touchUpInside)
+    }
+    
+    func setupInfoView(infoView: DeliveryDetailInfoView) {
+        self.view.addSubview(infoView)
+        infoView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.layoutMarginsGuide.snp.top)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+            
+        }
+        self.infoView = infoView
+    }
+    
     func toggleFavBtn(isFav: Bool) {
         guard let btn = favoriteButton else { return }
         if isFav {
@@ -29,4 +64,7 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
         navigationItem.title = navTitle
     }
     
+    @objc func favBtnTapped() {
+        interactor?.toggleDeliveryFavariteStatus()
+    }
 }

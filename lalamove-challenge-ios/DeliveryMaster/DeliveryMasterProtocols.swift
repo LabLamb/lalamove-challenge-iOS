@@ -9,13 +9,12 @@
 import UIKit
 
 protocol DeliveryMasterViewControllerInterface: BaseViewController {
-    var isRequestingMoreData: Bool { get set }
-    func setupTableView(tableView: UIView)
-    func showAPIError(alertViewController: UIViewController)
+    func setupTableView(tableView: UITableView)
+    func startRequestAnimation()
+    func stopRequestAnimation()
 }
 
 protocol DeliveryMasterInteractorInterface: BaseInteractor {
-    func initialFetch()
     func fetchDeliveries()
     func showDeliveryDetails(index: Int)
 }
@@ -23,13 +22,13 @@ protocol DeliveryMasterInteractorInterface: BaseInteractor {
 protocol DeliveryMasterPresenterInterface: BasePresenter {
     func presentDeliveryDetails(index: Int)
     func presentTableView()
-    func presentAPIError()
+    func presentStartingFetchAnimation()
+    func presentCompleteFetchAnimation()
     
     func updateDeliveries(incomingDeliveries: [Delivery])
     func updateDeliveryImage(with id: String, image: UIImage)
     
     func getPagingInfo(limit: Int) -> DeliveryPagingInfo
-    func refreshTableView()
 }
 
 protocol DeliveryMasterRouterInterface {

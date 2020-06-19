@@ -6,7 +6,14 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
-protocol BaseViewController {
+import Foundation
+import UIKit.UIViewController
+
+protocol Configurator {
+    func configViewController() -> UIViewController
+}
+
+protocol BaseViewController: class {
     func setupNavigationBarTitle()
 }
 

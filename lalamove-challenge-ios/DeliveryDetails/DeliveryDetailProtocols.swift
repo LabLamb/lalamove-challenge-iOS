@@ -6,20 +6,22 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
+import Foundation
+import UIKit.UIButton
+
 protocol DeliveryDetailViewControllerInterface: BaseViewController {
     func toggleFavBtn(isFav: Bool)
+    func setupFavBtn(favBtn: UIButton)
+    func setupInfoView(infoView: DeliveryDetailInfoView)
 }
 
 protocol DeliveryDetailInteractorInterface: BaseInteractor {
-    func markDeliveryAsFav()
+    func toggleDeliveryFavariteStatus()
 }
 
 protocol DeliveryDetailPresenterInterface: BasePresenter {
-    func setupStackView()
-    func setupRouteView()
-    func setupGoodsPicView()
-    func setupFeeView()
-    func setupFavBtn()
-    
+    func presentFavoriteButton()
+    func presentInfoView()
     func updateFavBtn()
+    func toggleIsFav()
 }

@@ -7,6 +7,7 @@ target 'lalamove-challenge-ios' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SwiftDate'
+  pod 'SQLite.swift', '~> 0.12.0'
 
   target 'lalamove-challenge-iosUITests' do
     inherit! :search_paths
