@@ -3,7 +3,15 @@ iOS Challange for lalamove.
 https://github.com/techchallenge-lalamove/challenge/blob/master/mobile.md
 
 ## Target
-The layout is targeted for device iPhone XR (or later), older device mighr suffer from layout misplace.
+Duve to time boxing, the application layout is targeted for:
+
+- iPhone XR
+- iPhone X
+- iPhone 11
+- iPhone 11 Pro
+- iPhone 11 Pro Max
+
+... other devices mighr suffer from layout misplace.
 
 ## Architecture
 This repo does not follow VIPER 100%, this is a showcase of something similar that (try to) follow the SOLID principles.
