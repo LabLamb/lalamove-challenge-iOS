@@ -25,7 +25,6 @@ class DeliveryDetailConfigurator: Configurator {
         interactor.presenter = presenter
         
         presenter.viewController = viewController
-        presenter.delivery = deilvery
         
         return viewController
     }
