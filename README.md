@@ -3,7 +3,7 @@ iOS Challange for lalamove.
 https://github.com/techchallenge-lalamove/challenge/blob/master/mobile.md
 
 ## Target
-Duve to time boxing, the application layout is targeted for:
+Due to time boxing, the application layout is targeted for:
 
 - iPhone XR
 - iPhone X
@@ -11,7 +11,7 @@ Duve to time boxing, the application layout is targeted for:
 - iPhone 11 Pro
 - iPhone 11 Pro Max
 
-... other devices mighr suffer from layout misplace.
+... other devices might suffer from layout misplacement.
 
 ## Architecture
 This repo does not follow VIPER 100%, this is a showcase of something similar that (try to) follow the SOLID principles.
