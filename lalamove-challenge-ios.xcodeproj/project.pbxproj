@@ -266,7 +266,6 @@
 				D24A6D00249A61E1008F0C44 /* Sources */,
 				D24A6D01249A61E1008F0C44 /* Frameworks */,
 				D24A6D02249A61E1008F0C44 /* Resources */,
-				08D9FAF3CD84C7DE6B1F2328 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -354,23 +353,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08D9FAF3CD84C7DE6B1F2328 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CAD31D5F061EB996B27A06B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
