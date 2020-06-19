@@ -1,6 +1,6 @@
 # lalamove-challenge-iOS
 iOS Challange for lalamove.
-<br>https://github.com/techchallenge-lalamove/challenge/blob/master/mobile.md
+<br>https://github.com/LabLamb/lalamove-challenge-iOS/blob/master/challenge.md
 
 ## Target
 Due to time boxing, the application layout is targeted for:
