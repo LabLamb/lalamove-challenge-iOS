@@ -101,10 +101,10 @@ class DeliveryMasterCell: UITableViewCell {
             goodsImageView.image = pic
         }
         
-        favImage.isHidden = !summary.isFav
+        favImage.isHidden = !summary.isFavorite
         
         priceLabel.text = {
-            guard let priceString = summary.price.toLocalCurrency(fractDigits: 2) else { return "" }
+            guard let priceString = summary.fee.toLocalCurrency(fractDigits: 2) else { return "" }
             return "$\(priceString)"
         }()
     }

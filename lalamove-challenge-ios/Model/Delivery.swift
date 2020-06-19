@@ -49,10 +49,10 @@ class Delivery: Codable {
 }
 
 protocol DeliverySummary {
-    var price: Double { get }
+    var fee: Double { get }
     var from: String { get }
     var to: String { get }
-    var isFav: Bool { get }
+    var isFavorite: Bool { get }
     var goodsPic: UIImage? { get }
 }
 
@@ -61,19 +61,11 @@ extension Delivery: DeliverySummary {
         return getGoodsImage()
     }
     
-    var price: Double {
-        return fee
-    }
-    
     var from: String {
         return routeStart
     }
     
     var to: String {
         return routeEnd
-    }
-    
-    var isFav: Bool {
-        return isFavorite
     }
 }

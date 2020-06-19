@@ -34,7 +34,7 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
     
     func updateFavBtn() {
         guard let delivery = delivery else { return }
-        viewController?.toggleFavBtn(isFav: delivery.isFav)
+        viewController?.toggleFavBtn(isFav: delivery.isFavorite)
     }
     
     func presentNavigationTitle() {
