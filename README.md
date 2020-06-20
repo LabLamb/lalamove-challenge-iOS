@@ -31,3 +31,6 @@ At any given time, the array should only contain N * fetch limit elements to pre
 This is a trade off to processing power, but it also gives users a better chance to refresh the data from the server.
 
 Alongside with the cache improvement mentioned above, this smoothens the UX.
+
+### Unit test
+I have only written unit test for the two VIPER classes, more could be done on the `DeliveryStateHandler` and `DeliveryLocalStorageHandler`.
