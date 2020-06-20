@@ -19,32 +19,32 @@ class UITests: XCTestCase {
         app.launch()
     }
     
-    func testAppWillShowLoadingDataOnLaunch() {
+    func testIndicatorExists() {
         XCTAssertNotNil(app.tables.allElementsBoundByIndex.first?.activityIndicators["In progress"])
     }
     
-    func testAppSuccessfullyLoadedData() {
+    func testInitialLoad() {
         let exists = NSPredicate(format: "count >= 20")
         expectation(for: exists, evaluatedWith: app.cells, handler: nil)
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testAppSuccessfullyLoadedMoreData() {
-        testAppSuccessfullyLoadedData()
+    func testLoadMoreData() {
+        testInitialLoad()
         
         for _ in 0...3 {
             app.swipeUp()
         }
         
-        testAppWillShowLoadingDataOnLaunch()
+        testIndicatorExists()
         
         let exists = NSPredicate(format: "count >= 40")
         expectation(for: exists, evaluatedWith: app.cells, handler: nil)
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testAppSuccessfullyEnterDetailPage() {
-        testAppSuccessfullyLoadedData()
+    func testEnterDetailPage() {
+        testInitialLoad()
         app.cells.allElementsBoundByIndex.first?.tap()
         XCTAssert(app.staticTexts["From"].exists)
         XCTAssert(app.staticTexts["To"].exists)
@@ -53,8 +53,8 @@ class UITests: XCTestCase {
         XCTAssertNotNil(app.buttons.allElementsBoundByIndex.first(where: { $0.label.contains("Favorite") }))
     }
     
-    func testAppSuccessfullyToggleDetailPageIsFavButton() {
-        testAppSuccessfullyEnterDetailPage()
+    func testTogglingFavButton() {
+        testEnterDetailPage()
         guard let isFavBtn = app.buttons.allElementsBoundByIndex.first(where: { $0.label.contains("Favorite") }) else {
             XCTFail("Favorite button is missing.")
             return
@@ -66,8 +66,8 @@ class UITests: XCTestCase {
         XCTAssertNotEqual(originalTxt, newTxt)
     }
     
-    func testAppDidChangeIsFavInMaster() {
-        testAppSuccessfullyLoadedData()
+    func testTogglingFavButtonWillAffectMaster() {
+        testInitialLoad()
         
         guard let targetCell = app.cells.allElementsBoundByIndex.first(where: { cell in
             !cell.staticTexts.allElementsBoundByIndex.contains(where: { $0.label == "❤️" })

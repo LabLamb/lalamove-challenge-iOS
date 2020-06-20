@@ -31,14 +31,14 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
     func setupView() {
         presentTableView()
         presentNavigationTitle()
-        updateTableView()
+        updateDeliveries()
     }
     
     func presentRetryFetchAlert() {
         let alert = UIAlertController(title: "Error", message: "Fail to fetch data", preferredStyle: .alert)
         let tryAgainBtn = UIAlertAction(title: "Try again", style: .default, handler: { [weak self] alertBtn in
             guard let self = self else { return }
-            self.updateTableView()
+            self.updateDeliveries()
             self.viewController?.toggleRequestAnimation(animate: true)
         })
         let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel)
@@ -59,14 +59,10 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
         viewController?.reloadTableView()
     }
     
-    func completeTableViewUpdate() {
-        viewController?.toggleRequestAnimation(animate: false)
-    }
-    
-    func updateTableView() {
+    func updateDeliveries() {
         interactor?.fetchDeliveries(onCompletion: { [weak self] in
             guard let self = self else { return }
-            self.completeTableViewUpdate()
+            self.viewController?.toggleRequestAnimation(animate: false)
         })
     }
 }

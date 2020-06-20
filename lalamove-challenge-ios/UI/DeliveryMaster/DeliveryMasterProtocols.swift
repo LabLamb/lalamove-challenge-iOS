@@ -24,8 +24,7 @@ protocol DeliveryMasterPresenterInterface: BasePresenterInterface {
     func presentDeliveryDetails(index: Int)
     func presentRetryFetchAlert()
     func reloadTableView()
-    func updateTableView()
-    func completeTableViewUpdate()
+    func updateDeliveries()
 }
 
 protocol DeliveryMasterRouterInterface {

@@ -83,7 +83,7 @@ extension DeliveryMasterViewController: UITableViewDelegate {
         
         if maximumOffset - currentOffset <= 0 {
             if !isLoading {
-                presenter?.updateTableView()
+                presenter?.updateDeliveries()
                 toggleRequestAnimation(animate: true)
             }
         }

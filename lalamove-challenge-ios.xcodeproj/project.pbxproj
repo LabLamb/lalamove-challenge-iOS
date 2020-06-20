@@ -39,13 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D24A6D1B249A61E2008F0C44 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D24A6CFC249A61E1008F0C44 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D24A6D03249A61E1008F0C44;
-			remoteInfo = "lalamove-challenge-ios";
-		};
 		D2E71BAD249DE81700E9216A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D24A6CFC249A61E1008F0C44 /* Project object */;
@@ -69,7 +62,6 @@
 		D24A6D10249A61E2008F0C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D24A6D13249A61E2008F0C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D24A6D15249A61E2008F0C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lalamove-challenge-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24E579B249CB4E6000B1E3A /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
 		D24E579D249CB4F1000B1E3A /* DeliveryFeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryFeeView.swift; sourceTree = "<group>"; };
 		D24FB156249A749400F149E0 /* DeliveryMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryMasterViewController.swift; sourceTree = "<group>"; };
@@ -100,13 +92,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D24A6D17249A61E2008F0C44 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */,
-				D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */,
 				D2E71BA8249DE81700E9216A /* UITests.xctest */,
 			);
 			name = Products;
@@ -303,24 +287,6 @@
 			productReference = D24A6D04249A61E1008F0C44 /* lalamove-challenge-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D24A6D19249A61E2008F0C44 /* lalamove-challenge-iosUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D24A6D26249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-iosUITests" */;
-			buildPhases = (
-				D24A6D16249A61E2008F0C44 /* Sources */,
-				D24A6D17249A61E2008F0C44 /* Frameworks */,
-				D24A6D18249A61E2008F0C44 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D24A6D1C249A61E2008F0C44 /* PBXTargetDependency */,
-			);
-			name = "lalamove-challenge-iosUITests";
-			productName = "lalamove-challenge-iosUITests";
-			productReference = D24A6D1A249A61E2008F0C44 /* lalamove-challenge-iosUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		D2E71BA7249DE81700E9216A /* UITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2E71BB1249DE81700E9216A /* Build configuration list for PBXNativeTarget "UITests" */;
@@ -352,10 +318,6 @@
 					D24A6D03249A61E1008F0C44 = {
 						CreatedOnToolsVersion = 11.5;
 					};
-					D24A6D19249A61E2008F0C44 = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = D24A6D03249A61E1008F0C44;
-					};
 					D2E71BA7249DE81700E9216A = {
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = D24A6D03249A61E1008F0C44;
@@ -376,7 +338,6 @@
 			projectRoot = "";
 			targets = (
 				D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */,
-				D24A6D19249A61E2008F0C44 /* lalamove-challenge-iosUITests */,
 				D2E71BA7249DE81700E9216A /* UITests */,
 			);
 		};
@@ -389,13 +350,6 @@
 			files = (
 				D24A6D14249A61E2008F0C44 /* LaunchScreen.storyboard in Resources */,
 				D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D24A6D18249A61E2008F0C44 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,13 +420,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D24A6D16249A61E2008F0C44 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D2E71BA4249DE81700E9216A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -484,11 +431,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D24A6D1C249A61E2008F0C44 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */;
-			targetProxy = D24A6D1B249A61E2008F0C44 /* PBXContainerItemProxy */;
-		};
 		D2E71BAE249DE81700E9216A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D24A6D03249A61E1008F0C44 /* lalamove-challenge-ios */;
@@ -658,44 +600,6 @@
 			};
 			name = Release;
 		};
-		D24A6D27249A61E2008F0C44 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "lalamove-challenge-iosUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-iosUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "lalamove-challenge-ios";
-			};
-			name = Debug;
-		};
-		D24A6D28249A61E2008F0C44 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "lalamove-challenge-iosUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "LabLamb.lalamove-challenge-iosUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "lalamove-challenge-ios";
-			};
-			name = Release;
-		};
 		D2E71BAF249DE81700E9216A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -749,15 +653,6 @@
 			buildConfigurations = (
 				D24A6D24249A61E2008F0C44 /* Debug */,
 				D24A6D25249A61E2008F0C44 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D24A6D26249A61E2008F0C44 /* Build configuration list for PBXNativeTarget "lalamove-challenge-iosUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D24A6D27249A61E2008F0C44 /* Debug */,
-				D24A6D28249A61E2008F0C44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
