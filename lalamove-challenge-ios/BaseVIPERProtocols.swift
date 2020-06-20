@@ -17,10 +17,6 @@ protocol BaseViewControllerInterface: class {
     func setupNavigationBarTitle()
 }
 
-protocol BaseInteractorInterface {
+protocol BasePresenterInterface: class {
     func setupView()
-}
-
-protocol BasePresenterInterface {
-    func presentNavigationTitle()
 }

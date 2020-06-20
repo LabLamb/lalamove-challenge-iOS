@@ -14,23 +14,21 @@ protocol DeliveryMasterViewControllerInterface: BaseViewControllerInterface {
     func toggleRequestAnimation(animate: Bool)
 }
 
-protocol DeliveryMasterInteractorInterface: BaseInteractorInterface {
-    func fetchDeliveries()
-    func showDeliveryDetails(index: Int)
+protocol DeliveryMasterInteractorInterface {
+    func fetchDeliveries(onCompletion: @escaping () -> ())
+    func getNumberOfDeliveries() -> Int
+    func getDelivery(at index: Int) -> Delivery
 }
 
 protocol DeliveryMasterPresenterInterface: BasePresenterInterface {
     func presentDeliveryDetails(index: Int)
-    func presentTableView()
-    func presentStartingFetchAnimation()
-    func presentStopFetchAnimation()
-    
-    func updateDeliveries(incomingDeliveries: [Delivery])
-    func updateDeliveryImage(with id: String, image: UIImage)
-    
-    func getPagingInfo(limit: Int) -> DeliveryPagingInfo
+    func presentRetryFetchAlert()
+    func reloadTableView()
+    func updateTableView()
+    func completeTableViewUpdate()
 }
 
 protocol DeliveryMasterRouterInterface {
     func routeToDetailPage(viewController: UIViewController)
+    func routeToRetryFetchAlert(viewController: UIViewController)
 }

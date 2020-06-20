@@ -9,58 +9,64 @@
 import UIKit
 
 class DeliveryDetailPresenter {
-    var delivery: Delivery
+    
+    private let addFavoriteBtnText = "Add to Favorite ❤️"
+    private let removeFavoriteBtnText = "Remove from Favorite 💔"
+    
+    var interactor: DeliveryDetailInteractorInterface?
     weak var viewController: DeliveryDetailViewControllerInterface?
     private var displayLink: CADisplayLink?
     
-    init(delivery: Delivery) {
-        self.delivery = delivery
+    init() {
         displayLink = CADisplayLink(target: self, selector: #selector(self.updateInfoView))
         displayLink?.add(to: .main, forMode: .default)
     }
-}
-
-extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
+    
     func presentFavoriteButton() {
+        guard let interactor = interactor else { return }
         let btn = UIButton()
         btn.backgroundColor = .systemBlue
+        let title = interactor.getIsFavorite() ? removeFavoriteBtnText : addFavoriteBtnText
+        btn.setTitle(title, for: .normal)
         btn.setTitleColor(.white, for: .normal)
+        btn.addTarget(self, action: #selector(favBtnTapped), for: .touchUpInside)
         viewController?.setupFavBtn(favBtn: btn)
-        updateFavoriteBtn()
     }
     
     func presentInfoView() {
-        let config = getInfoViewConfig()
+        guard let interactor = self.interactor else { return }
+        let config = interactor.getInfoViewConfig()
         let infoView = DeliveryDetailInfoView(config: config)
         viewController?.setupInfoView(infoView: infoView)
     }
     
-    func toggleIsFavorite() {
-        delivery.isFavorite = !delivery.isFavorite
+    @objc func favBtnTapped() {
+        let isFav = toggleIsFavorite()
+        let title = isFav ? removeFavoriteBtnText : addFavoriteBtnText
+        viewController?.updateFavBtnTitle(title: title)
     }
     
-    func updateFavoriteBtn() {
-        viewController?.toggleFavBtn(isFav: delivery.isFavorite)
+    @objc func updateInfoView() {
+        guard let interactor = self.interactor else { return }
+        let config = interactor.getInfoViewConfig()
+        viewController?.updateInfoView(config: config)
     }
-    
-    func presentNavigationTitle() {
+}
+
+extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
+    func setupView() {
+        presentInfoView()
+        presentFavoriteButton()
         viewController?.setupNavigationBarTitle()
     }
     
-    func getInfoViewConfig() -> DeliveryDetailInfoViewConfiguration {
-        let img = delivery.getGoodsImage() ?? UIImage()
-        return DeliveryDetailInfoViewConfiguration(fromAddress: delivery.from,
-                                                   toAddress: delivery.to,
-                                                   goodsImage: img,
-                                                   deliveryFee: delivery.fee)
+    func toggleIsFavorite() -> Bool {
+        guard let interactor = interactor else { return false }
+        return interactor.toggleDeliveryIsFavorite()
     }
     
     func removeCADisplayLink() {
         displayLink?.invalidate()
     }
     
-    @objc func updateInfoView() {
-        let config = getInfoViewConfig()
-        viewController?.updateInfoView(config: config)
-    }
 }

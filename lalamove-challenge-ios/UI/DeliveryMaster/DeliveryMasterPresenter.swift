@@ -9,22 +9,10 @@
 import UIKit
 
 class DeliveryMasterPresenter: NSObject {
-    var deliveries: [Delivery] = []
     
+    var interactor: DeliveryMasterInteractorInterface?
     weak var viewController: DeliveryMasterViewControllerInterface?
     var router: DeliveryMasterRouterInterface?
-}
-
-extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
-    func updateDeliveryImage(with id: String, image: UIImage) {
-        guard let index = deliveries.firstIndex(where: { $0.id == id }) else { return }
-        deliveries[index].goodsPicData = image.pngData()?.base64EncodedString()
-        viewController?.reloadTableView()
-    }
-    
-    func getPagingInfo(limit: Int) -> DeliveryPagingInfo {
-        return (deliveries.count, limit)
-    }
     
     func presentNavigationTitle() {
         viewController?.setupNavigationBarTitle()
@@ -37,41 +25,67 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
         viewController?.setupTableView(tableView: tempTableView)
     }
     
-    func updateDeliveries(incomingDeliveries: [Delivery]) {
-        deliveries.append(contentsOf: incomingDeliveries)
-        presentStopFetchAnimation()
+}
+
+extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
+    func setupView() {
+        presentTableView()
+        presentNavigationTitle()
+        updateTableView()
+    }
+    
+    func presentRetryFetchAlert() {
+        let alert = UIAlertController(title: "Error", message: "Fail to fetch data", preferredStyle: .alert)
+        let tryAgainBtn = UIAlertAction(title: "Try again", style: .default, handler: { [weak self] alertBtn in
+            guard let self = self else { return }
+            self.updateTableView()
+            self.viewController?.toggleRequestAnimation(animate: true)
+        })
+        let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(tryAgainBtn)
+        alert.addAction(cancelBtn)
+        router?.routeToRetryFetchAlert(viewController: alert)
     }
     
     func presentDeliveryDetails(index: Int) {
-        if index < deliveries.count {
-            let delivery = deliveries[index]
-            let configurator = DeliveryDetailConfigurator(deilvery: delivery)
-            let deliveryDetVC = configurator.configViewController()
-            router?.routeToDetailPage(viewController: deliveryDetVC)
-        }
+        guard let interactor = self.interactor else { return }
+        let delivery = interactor.getDelivery(at: index)
+        let configurator = DeliveryDetailConfigurator(deilvery: delivery)
+        let deliveryDetVC = configurator.configViewController()
+        router?.routeToDetailPage(viewController: deliveryDetVC)
     }
     
-    func presentStopFetchAnimation() {
+    func reloadTableView() {
+        viewController?.reloadTableView()
+    }
+    
+    func completeTableViewUpdate() {
         viewController?.toggleRequestAnimation(animate: false)
     }
     
-    func presentStartingFetchAnimation() {
-        viewController?.toggleRequestAnimation(animate: true)
+    func updateTableView() {
+        interactor?.fetchDeliveries(onCompletion: { [weak self] in
+            guard let self = self else { return }
+            self.completeTableViewUpdate()
+        })
     }
 }
 
 extension DeliveryMasterPresenter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deliveries.count
+        guard let interactor = self.interactor else { return 0 }
+        return interactor.getNumberOfDeliveries()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryMasterCell.cellIdentifier, for: indexPath) as? DeliveryMasterCell else {
-            return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryMasterCell.cellIdentifier, for: indexPath) as? DeliveryMasterCell,
+            let interactor = self.interactor
+            else {
+                return UITableViewCell()
         }
         
-        let delivery = deliveries[indexPath.row]
+        let delivery = interactor.getDelivery(at: indexPath.row)
         cell.configData(summary: delivery)
         
         return cell

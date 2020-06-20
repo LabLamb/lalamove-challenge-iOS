@@ -17,12 +17,13 @@ class DeliveryMasterConfigurator: Configurator {
         
         let presenter = DeliveryMasterPresenter()
         
-        viewController.interactor = interactor
+        presenter.viewController = viewController
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        viewController.presenter = presenter
         interactor.presenter = presenter
         router.viewController = viewController
-        
-        presenter.router = router
-        presenter.viewController = viewController
         
         return viewController
     }

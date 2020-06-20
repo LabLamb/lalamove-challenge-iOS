@@ -15,17 +15,20 @@ class DeliveryDetailViewController: UIViewController {
     }
     
     fileprivate let navTitle = "Delivery Details"
-    private let addFavoriteBtnText = "Add to Favorite ❤️"
-    private let removeFavoriteBtnText = "Remove from Favorite 💔"
     
     private weak var infoView: DeliveryDetailInfoView?
     private weak var favoriteButton: UIButton?
-    var interactor: DeliveryDetailInteractorInterface?
+    var presenter: DeliveryDetailPresenterInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        interactor?.setupView()
+        presenter?.setupView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        presenter?.removeCADisplayLink()
     }
 }
 
@@ -38,7 +41,6 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
             make.height.equalToSuperview().dividedBy(20)
         }
         favoriteButton = favBtn
-        favoriteButton?.addTarget(self, action: #selector(favBtnTapped), for: .touchUpInside)
     }
     
     func setupInfoView(infoView: DeliveryDetailInfoView) {
@@ -50,23 +52,12 @@ extension DeliveryDetailViewController: DeliveryDetailViewControllerInterface {
         self.infoView = infoView
     }
     
-    func toggleFavBtn(isFav: Bool) {
-        interactor?.updateLocalDeliveryFavorite(status: isFav)
-        
-        guard let btn = favoriteButton else { return }
-        if isFav {
-            btn.setTitle(removeFavoriteBtnText, for: .normal)
-        } else {
-            btn.setTitle(addFavoriteBtnText, for: .normal)
-        }
+    func updateFavBtnTitle(title: String) {
+        favoriteButton?.setTitle(title, for: .normal)
     }
     
     func setupNavigationBarTitle() {
         navigationItem.title = navTitle
-    }
-    
-    @objc func favBtnTapped() {
-        interactor?.updateFavoriteBtnStatus()
     }
     
     func updateInfoView(config: DeliveryDetailInfoViewConfiguration) {

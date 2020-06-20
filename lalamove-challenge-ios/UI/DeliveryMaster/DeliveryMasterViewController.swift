@@ -12,13 +12,12 @@ class DeliveryMasterViewController: UIViewController {
     
     fileprivate let navTitle = "My Deliveries"
     fileprivate var isLoading = true
-    var interactor: DeliveryMasterInteractorInterface?
+    var presenter: DeliveryMasterPresenterInterface?
     weak var tableView: UITableView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.fetchDeliveries()
-        interactor?.setupView()
+        presenter?.setupView()
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -31,8 +30,10 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
     
     func reloadTableView() {
         DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.tableView?.reloadData()
+            guard let self = self,
+                let tableView = self.tableView else { return }
+            tableView.reloadData()
+            tableView.separatorColor = tableView.visibleCells.isEmpty ? .clear : .lightGray
         }
     }
     
@@ -45,7 +46,7 @@ extension DeliveryMasterViewController: DeliveryMasterViewControllerInterface {
         navigationItem.title = navTitle
     }
     
-
+    
     func setupTableView(tableView: UITableView) {
         tableView.delegate = self
         view.addSubview(tableView)
@@ -63,7 +64,7 @@ extension DeliveryMasterViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.showDeliveryDetails(index: indexPath.row)
+        presenter?.presentDeliveryDetails(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -82,7 +83,8 @@ extension DeliveryMasterViewController: UITableViewDelegate {
         
         if maximumOffset - currentOffset <= 0 {
             if !isLoading {
-                interactor?.fetchDeliveries()
+                presenter?.updateTableView()
+                toggleRequestAnimation(animate: true)
             }
         }
     }

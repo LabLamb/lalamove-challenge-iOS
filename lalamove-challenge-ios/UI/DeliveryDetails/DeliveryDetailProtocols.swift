@@ -10,21 +10,18 @@ import Foundation
 import UIKit.UIButton
 
 protocol DeliveryDetailViewControllerInterface: BaseViewControllerInterface {
-    func toggleFavBtn(isFav: Bool)
     func setupFavBtn(favBtn: UIButton)
     func setupInfoView(infoView: DeliveryDetailInfoView)
+    func updateFavBtnTitle(title: String)
     func updateInfoView(config: DeliveryDetailInfoViewConfiguration)
 }
 
-protocol DeliveryDetailInteractorInterface: BaseInteractorInterface {
-    func updateLocalDeliveryFavorite(status: Bool)
-    func updateFavoriteBtnStatus()
+protocol DeliveryDetailInteractorInterface {
+    func getIsFavorite() -> Bool
+    func getInfoViewConfig() -> DeliveryDetailInfoViewConfiguration
+    func toggleDeliveryIsFavorite() -> Bool
 }
 
 protocol DeliveryDetailPresenterInterface: BasePresenterInterface {
-    func presentFavoriteButton()
-    func presentInfoView()
-    func updateFavoriteBtn()
-    func toggleIsFavorite()
     func removeCADisplayLink()
 }

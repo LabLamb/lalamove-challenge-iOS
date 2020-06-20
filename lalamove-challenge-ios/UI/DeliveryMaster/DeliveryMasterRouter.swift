@@ -14,9 +14,20 @@ class DeliveryMasterRouter {
 
 extension DeliveryMasterRouter: DeliveryMasterRouterInterface {
     func routeToDetailPage(viewController: UIViewController) {
-        if let nav = self.viewController?.navigationController {
-            nav.pushViewController(viewController, animated: true)
-        } else {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            if let nav = self.viewController?.navigationController {
+                nav.pushViewController(viewController, animated: true)
+            } else {
+                self.viewController?.present(viewController, animated: true)
+            }
+        }
+    }
+    
+    func routeToRetryFetchAlert(viewController: UIViewController) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.viewController?.present(viewController, animated: true)
         }
     }

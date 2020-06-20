@@ -6,35 +6,39 @@
 //  Copyright © 2020 LabLamb. All rights reserved.
 //
 
+import UIKit.UIImage
+
 class DeliveryDetailInteractor {
+    
+    private var delivery: Delivery
+    
     fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
-    fileprivate let deliveryId: String
-    var presenter: DeliveryDetailPresenterInterface?
+    weak var presenter: DeliveryDetailPresenterInterface?
     
-    init(deliveryId: String,
+    init(delivery: Delivery,
         deliveryStatehandler: DeliveryStateHandlerInterface = DeliveryStateHandler()) {
-        self.deliveryId = deliveryId
+        self.delivery = delivery
         self.deliveryStatehandler = deliveryStatehandler
-    }
-    
-    deinit {
-        presenter?.removeCADisplayLink()
     }
 }
 
 extension DeliveryDetailInteractor: DeliveryDetailInteractorInterface {
-    func updateLocalDeliveryFavorite(status: Bool) {
-        deliveryStatehandler?.updateFavoriteStatus(id: deliveryId, isFav: status)
+    
+    func getIsFavorite() -> Bool {
+        return delivery.isFavorite
     }
     
-    func updateFavoriteBtnStatus() {
-        presenter?.toggleIsFavorite()
-        presenter?.updateFavoriteBtn()
+    func getInfoViewConfig() -> DeliveryDetailInfoViewConfiguration {
+        let img = delivery.getGoodsImage() ?? UIImage()
+        return DeliveryDetailInfoViewConfiguration(fromAddress: delivery.from,
+                                                   toAddress: delivery.to,
+                                                   goodsImage: img,
+                                                   deliveryFee: delivery.fee)
     }
     
-    func setupView() {
-        presenter?.presentInfoView()
-        presenter?.presentFavoriteButton()
-        presenter?.presentNavigationTitle()
+    func toggleDeliveryIsFavorite() -> Bool {
+        delivery.isFavorite = !delivery.isFavorite
+        deliveryStatehandler?.updateFavoriteStatus(id: delivery.id, isFav: delivery.isFavorite)
+        return delivery.isFavorite
     }
 }

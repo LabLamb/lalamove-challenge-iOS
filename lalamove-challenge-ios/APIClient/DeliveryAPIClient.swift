@@ -13,13 +13,14 @@ import SwiftyJSON
 typealias DeliveryPagingInfo = (offset: Int, limit: Int)
 
 enum DeliveryAPICallError {
-    case genericError, apiClientDeinit
+    case genericError
 }
 
 protocol DeliveryAPIClientInterface {
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   onResponse: @escaping ([JSON]) -> (),
-                                   onError: @escaping (DeliveryAPICallError) -> ())
+                                   onCompletion: @escaping () -> (),
+                                   onResponse: @escaping ([JSON], () -> ()) -> (),
+                                   onError: @escaping (DeliveryAPICallError, () -> ()) -> ())
     
     func fetchImageFromLink(imgUrl: String,
                             onResponse: @escaping (UIImage) -> ())
@@ -34,8 +35,9 @@ class DeliveryAPIClient {
 extension DeliveryAPIClient: DeliveryAPIClientInterface {
     
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   onResponse: @escaping ([JSON]) -> (),
-                                   onError: @escaping (DeliveryAPICallError) -> ()) {
+                                   onCompletion: @escaping () -> (),
+                                   onResponse: @escaping ([JSON], () -> ()) -> (),
+                                   onError: @escaping (DeliveryAPICallError, () -> ()) -> ()) {
         
         let param: [String: Any]? = {
             guard let paging = paging else { return nil }
@@ -44,28 +46,19 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
         }()
         
         AF.request(deliverAPI, parameters: param)
-            .responseJSON(queue: .init(label: requestQueueHint), completionHandler: { [weak self] res in
-                guard let self = self else {
-                    onError(.apiClientDeinit)
-                    return
-                }
-                
+            .responseJSON(queue: .init(label: requestQueueHint), completionHandler: { res in
                 switch res.result {
                 case .success:
-                    self.handlerDeliveriesSuccessRetrieval(onResponse: onResponse, res: res)
+                    guard let data = res.data,
+                        let jsonArr = try? JSON(data: data).arrayValue else {
+                            onResponse([], onCompletion)
+                            return
+                    }
+                    onResponse(jsonArr, onCompletion)
                 case .failure:
-                    onError(.genericError)
+                    onError(.genericError, onCompletion)
                 }
             })
-    }
-    
-    fileprivate func handlerDeliveriesSuccessRetrieval(onResponse: @escaping ([JSON]) -> (), res: AFDataResponse<Any>) {
-        guard let data = res.data,
-            let jsonArr = try? JSON(data: data).arrayValue else {
-                onResponse([])
-                return
-        }
-        onResponse(jsonArr)
     }
     
     func fetchImageFromLink(imgUrl: String, onResponse: @escaping (UIImage) -> ()) {
