@@ -13,7 +13,6 @@ class DeliveryDetailInteractor {
     private var delivery: Delivery
     
     fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
-    weak var presenter: DeliveryDetailPresenterInterface?
     
     init(delivery: Delivery,
         deliveryStatehandler: DeliveryStateHandlerInterface = DeliveryStateHandler()) {

@@ -10,12 +10,12 @@ import UIKit
 
 class DeliveryDetailPresenter {
     
-    private let addFavoriteBtnText = "Add to Favorite ❤️"
-    private let removeFavoriteBtnText = "Remove from Favorite 💔"
+    let addFavoriteBtnText = "Add to Favorite ❤️"
+    let removeFavoriteBtnText = "Remove from Favorite 💔"
     
     var interactor: DeliveryDetailInteractorInterface?
     weak var viewController: DeliveryDetailViewControllerInterface?
-    private var displayLink: CADisplayLink?
+    var displayLink: CADisplayLink?
     
     init() {
         displayLink = CADisplayLink(target: self, selector: #selector(self.updateInfoView))
@@ -41,7 +41,8 @@ class DeliveryDetailPresenter {
     }
     
     @objc func favBtnTapped() {
-        let isFav = toggleIsFavorite()
+        guard let interactor = interactor else { return }
+        let isFav = interactor.toggleDeliveryIsFavorite()
         let title = isFav ? removeFavoriteBtnText : addFavoriteBtnText
         viewController?.updateFavBtnTitle(title: title)
     }
@@ -60,13 +61,9 @@ extension DeliveryDetailPresenter: DeliveryDetailPresenterInterface {
         viewController?.setupNavigationBarTitle()
     }
     
-    func toggleIsFavorite() -> Bool {
-        guard let interactor = interactor else { return false }
-        return interactor.toggleDeliveryIsFavorite()
-    }
-    
     func removeCADisplayLink() {
         displayLink?.invalidate()
+        displayLink = nil
     }
     
 }

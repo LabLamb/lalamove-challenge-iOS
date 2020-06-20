@@ -6,4 +6,13 @@ target 'lalamove-challenge-ios' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'AlamofireImage'
+
+  target 'UITests' do
+    inherit! :search_paths
+  end
+
+  target 'Unit Test' do
+    inherit! :search_paths
+  end
+
 end

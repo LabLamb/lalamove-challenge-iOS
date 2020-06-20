@@ -1,0 +1,17 @@
+{
+    "id": "5dd5f3a7156bae72fa5a5d6c",
+    "remarks": "Minim veniam minim nisi ullamco consequat anim reprehenderit laboris aliquip voluptate sit.",
+    "pickupTime": "2014-10-06T10:45:38-08:00",
+    "goodsPicture": "https://loremflickr.com/320/240/cat?lock=9953",
+    "deliveryFee": "$92.14",
+    "surcharge": "$136.46",
+    "route": {
+        "start": "Noble Street",
+        "end": "Montauk Court"
+    },
+    "sender": {
+    "phone": "+1 (899) 523-3905",
+    "name": "Harding Welch",
+    "email": "hardingwelch@comdom.com"
+     }
+}

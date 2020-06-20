@@ -13,7 +13,7 @@ protocol DeliveryStateHandlerInterface {
     func updateFavoriteStatus(id: String, isFav: Bool)
 }
 
-struct DeliveryStateHandler {
+class DeliveryStateHandler {
     let connectorString = "_"
     let favoriteStateKey = "favorite"
 }

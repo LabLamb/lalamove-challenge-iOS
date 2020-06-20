@@ -22,7 +22,6 @@ class DeliveryDetailConfigurator: Configurator {
         let presenter = DeliveryDetailPresenter()
 
         viewController.presenter = presenter
-        interactor.presenter = presenter
         
         presenter.viewController = viewController
         presenter.interactor = interactor
