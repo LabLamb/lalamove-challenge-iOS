@@ -15,7 +15,7 @@ iOS Challange for lalamove.
 - Delivery cached in `FileManager`'s `applicationDirectory` as encoded with `JSONEncoder`
 - Infinite scrolling `UIViewController`
 - VIPER architecture
-- sets of Unit Test on `DeliveryMaster` and `DeliveryDetails` screens
+- Unit Test on `DeliveryMaster` and `DeliveryDetails` screens
 - UI Test on common use cases
 
 
