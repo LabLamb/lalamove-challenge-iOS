@@ -11,6 +11,7 @@ import AlamofireImage
 import SwiftyJSON
 
 typealias DeliveryPagingInfo = (offset: Int, limit: Int)
+typealias ResponseCallback = (Result<Any, AFError>) -> Void
 
 enum DeliveryAPICallError {
     case genericError
@@ -18,12 +19,10 @@ enum DeliveryAPICallError {
 
 protocol DeliveryAPIClientInterface {
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   onCompletion: @escaping () -> (),
-                                   onResponse: @escaping ([JSON], () -> ()) -> (),
-                                   onError: @escaping (DeliveryAPICallError, () -> ()) -> ())
+                                   completion: @escaping ResponseCallback)
     
     func fetchImageFromLink(imgUrl: String,
-                            onResponse: @escaping (UIImage) -> ())
+                            completion: @escaping (Result<UIImage, AFError>) -> Void)
 }
 
 class DeliveryAPIClient {
@@ -35,9 +34,7 @@ class DeliveryAPIClient {
 extension DeliveryAPIClient: DeliveryAPIClientInterface {
     
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   onCompletion: @escaping () -> (),
-                                   onResponse: @escaping ([JSON], () -> ()) -> (),
-                                   onError: @escaping (DeliveryAPICallError, () -> ()) -> ()) {
+                                   completion: @escaping ResponseCallback) {
         
         let param: [String: Any]? = {
             guard let paging = paging else { return nil }
@@ -47,28 +44,15 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
         
         AF.request(deliverAPI, parameters: param)
             .responseJSON(queue: .init(label: requestQueueHint), completionHandler: { res in
-                switch res.result {
-                case .success:
-                    guard let data = res.data,
-                        let jsonArr = try? JSON(data: data).arrayValue else {
-                            onResponse([], onCompletion)
-                            return
-                    }
-                    onResponse(jsonArr, onCompletion)
-                case .failure:
-                    onError(.genericError, onCompletion)
-                }
+                completion(res.result)
             })
     }
     
-    func fetchImageFromLink(imgUrl: String, onResponse: @escaping (UIImage) -> ()) {
-        AF.request(imgUrl, method: .get).responseImage(queue: .init(label: imageQueueHint), completionHandler: { res in
-            switch res.result {
-            case .success(let image):
-                onResponse(image)
-            case .failure:
-                break
-            }
+    func fetchImageFromLink(imgUrl: String,
+                            completion: @escaping (Result<UIImage, AFError>) -> ()) {
+        AF.request(imgUrl, method: .get)
+            .responseImage(queue: .init(label: imageQueueHint), completionHandler: { res in
+            completion(res.result)
         })
     }
 }
