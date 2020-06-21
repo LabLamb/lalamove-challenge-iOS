@@ -75,7 +75,7 @@ class DeliveryMasterInteractor {
     }
     
     func fetchDeliveryGoodImage(batch: Int, imgDetail: GoodsImgFetchDetails) {
-        let completionHandler: (Result<UIImage, AFError>) -> Void = { [weak self] result in
+        let completionHandler: ResponseImageCallback = { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let image):
@@ -123,7 +123,7 @@ class DeliveryMasterInteractor {
 
 extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
     func fetchDeliveries(onCompletion: @escaping () -> Void) {
-        let completionHandler: (Result<Any, AFError>) -> Void = { result in
+        let completionHandler: ResponseJSONCallback = { result in
             switch result {
             case .success(let json):
                 let jsonArr = JSON(json).arrayValue

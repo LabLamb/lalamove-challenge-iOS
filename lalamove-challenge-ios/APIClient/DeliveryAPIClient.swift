@@ -11,7 +11,8 @@ import AlamofireImage
 import SwiftyJSON
 
 typealias DeliveryPagingInfo = (offset: Int, limit: Int)
-typealias ResponseCallback = (Result<Any, AFError>) -> Void
+typealias ResponseJSONCallback = (Result<Any, AFError>) -> Void
+typealias ResponseImageCallback = (Result<UIImage, AFError>) -> Void
 
 enum DeliveryAPICallError {
     case genericError
@@ -19,10 +20,10 @@ enum DeliveryAPICallError {
 
 protocol DeliveryAPIClientInterface {
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   completion: @escaping ResponseCallback)
+                                   completion: @escaping ResponseJSONCallback)
     
     func fetchImageFromLink(imgUrl: String,
-                            completion: @escaping (Result<UIImage, AFError>) -> Void)
+                            completion: @escaping ResponseImageCallback)
 }
 
 class DeliveryAPIClient {
@@ -34,7 +35,7 @@ class DeliveryAPIClient {
 extension DeliveryAPIClient: DeliveryAPIClientInterface {
     
     func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
-                                   completion: @escaping ResponseCallback) {
+                                   completion: @escaping ResponseJSONCallback) {
         
         let param: [String: Any]? = {
             guard let paging = paging else { return nil }
@@ -49,7 +50,7 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
     }
     
     func fetchImageFromLink(imgUrl: String,
-                            completion: @escaping (Result<UIImage, AFError>) -> ()) {
+                            completion: @escaping ResponseImageCallback) {
         AF.request(imgUrl, method: .get)
             .responseImage(queue: .init(label: imageQueueHint), completionHandler: { res in
             completion(res.result)
