@@ -7,7 +7,7 @@ iOS Challange for lalamove.
 - Retrieves a list of delivery on launch
 - Display delivery details on selecting an item on the list
 - Allow users to toggle favorite/un-favorite in the delivery details
-- Delivery's favorite is presistance per user session
+- Delivery's favorite is presistance between user session
 - Delivery fee is calculated with `deliveryFee + surcharge`
 - Error prompt if fails to retrieve data from server **AND** no cache is available
 
