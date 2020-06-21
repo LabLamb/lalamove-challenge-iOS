@@ -54,3 +54,9 @@ Currently uses real connection to test, it will be much better if the testing co
 
 - Running UI Test on a offline CI pipeline
 - Neglect timeout issue with the pipeline
+
+### Snapshot Test
+Snapshot test should be impletmented to make sure the UI is in place on code change.
+
+### Integration Test
+A cherry on top would be integration tests (UI Test with real connection) before `git push` to ensure things works locally.
