@@ -14,6 +14,9 @@
 		D204DBAD249A709A003F3CE6 /* DeliveryMasterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */; };
 		D204DBAF249A7108003F3CE6 /* DeliveryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */; };
 		D204DBB2249A720C003F3CE6 /* DeliveryMasterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */; };
+		D2060168249F6DD600114B37 /* MockDeliveryMasterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2060166249F6DD100114B37 /* MockDeliveryMasterRouter.swift */; };
+		D206016B249F6FCC00114B37 /* MockDeilveryMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2060169249F6FC900114B37 /* MockDeilveryMasterViewController.swift */; };
+		D206016C249F70BD00114B37 /* DeliveryMasterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2060164249F6C9500114B37 /* DeliveryMasterPresenterTests.swift */; };
 		D24A6D08249A61E1008F0C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D07249A61E1008F0C44 /* AppDelegate.swift */; };
 		D24A6D0A249A61E1008F0C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A6D09249A61E1008F0C44 /* SceneDelegate.swift */; };
 		D24A6D11249A61E2008F0C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D24A6D10249A61E2008F0C44 /* Assets.xcassets */; };
@@ -26,6 +29,12 @@
 		D24FB162249A8DF600F149E0 /* Number+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB161249A8DF600F149E0 /* Number+Format.swift */; };
 		D24FB165249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */; };
 		D24FB16A249AD29100F149E0 /* SubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FB169249AD29100F149E0 /* SubtitleView.swift */; };
+		D2543633249F32BF00766CC9 /* DeliveryMasterInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2543630249F32B200766CC9 /* DeliveryMasterInteractorTests.swift */; };
+		D254363B249F348600766CC9 /* MockDeliveryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2543639249F345100766CC9 /* MockDeliveryAPIClient.swift */; };
+		D254363E249F386200766CC9 /* MockDeliveryLocalStorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254363C249F384A00766CC9 /* MockDeliveryLocalStorageHandler.swift */; };
+		D254363F249F386700766CC9 /* MockDeliveryList_offset_0.json in Resources */ = {isa = PBXBuildFile; fileRef = D2543635249F330E00766CC9 /* MockDeliveryList_offset_0.json */; };
+		D2543640249F386B00766CC9 /* MockDeliveryList_offset_20.json in Resources */ = {isa = PBXBuildFile; fileRef = D2543637249F342A00766CC9 /* MockDeliveryList_offset_20.json */; };
+		D2543645249F3B5100766CC9 /* MockDeliveryMasterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2543643249F3B4600766CC9 /* MockDeliveryMasterPresenter.swift */; };
 		D256548E249C8EDA00EB9A81 /* DeliveryStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D256548D249C8EDA00EB9A81 /* DeliveryStateHandler.swift */; };
 		D27AA36F249B1C2500BF84C4 /* DeliveryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */; };
 		D27AA372249B1CC500BF84C4 /* DeliveryDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */; };
@@ -38,7 +47,7 @@
 		D288F2FC249A637A003EAAA3 /* DeliveryMasterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */; };
 		D288F2FE249A6415003EAAA3 /* DeliveryMasterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */; };
 		D2ACD412249E3379009C31C8 /* DeliveryDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2453300249E2E9600E62F24 /* DeliveryDetailInteractorTests.swift */; };
-		D2ACD413249E3431009C31C8 /* MockDeliveryJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = D2ACD408249E303B009C31C8 /* MockDeliveryJSON.json */; };
+		D2ACD413249E3431009C31C8 /* MockDelivery.json in Resources */ = {isa = PBXBuildFile; fileRef = D2ACD408249E303B009C31C8 /* MockDelivery.json */; };
 		D2ACD418249E3D4E009C31C8 /* DeliveryDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD414249E3BBD009C31C8 /* DeliveryDetailPresenterTests.swift */; };
 		D2ACD419249E3D76009C31C8 /* MockDeliveryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ACD416249E3C3A009C31C8 /* MockDeliveryDetailViewController.swift */; };
 		D2E71BAB249DE81700E9216A /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E71BAA249DE81700E9216A /* UITests.swift */; };
@@ -77,6 +86,9 @@
 		D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenter.swift; sourceTree = "<group>"; };
 		D204DBAE249A7108003F3CE6 /* DeliveryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAPIClient.swift; sourceTree = "<group>"; };
 		D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterRouter.swift; sourceTree = "<group>"; };
+		D2060164249F6C9500114B37 /* DeliveryMasterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenterTests.swift; sourceTree = "<group>"; };
+		D2060166249F6DD100114B37 /* MockDeliveryMasterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeliveryMasterRouter.swift; sourceTree = "<group>"; };
+		D2060169249F6FC900114B37 /* MockDeilveryMasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeilveryMasterViewController.swift; sourceTree = "<group>"; };
 		D24532F5249E2E6800E62F24 /* UnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24532F9249E2E6800E62F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2453300249E2E9600E62F24 /* DeliveryDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailInteractorTests.swift; sourceTree = "<group>"; };
@@ -94,6 +106,12 @@
 		D24FB161249A8DF600F149E0 /* Number+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Number+Format.swift"; sourceTree = "<group>"; };
 		D24FB164249AA6DA00F149E0 /* DeliveryLocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryLocalStorageHandler.swift; sourceTree = "<group>"; };
 		D24FB169249AD29100F149E0 /* SubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleView.swift; sourceTree = "<group>"; };
+		D2543630249F32B200766CC9 /* DeliveryMasterInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterInteractorTests.swift; sourceTree = "<group>"; };
+		D2543635249F330E00766CC9 /* MockDeliveryList_offset_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDeliveryList_offset_0.json; sourceTree = "<group>"; };
+		D2543637249F342A00766CC9 /* MockDeliveryList_offset_20.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDeliveryList_offset_20.json; sourceTree = "<group>"; };
+		D2543639249F345100766CC9 /* MockDeliveryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeliveryAPIClient.swift; sourceTree = "<group>"; };
+		D254363C249F384A00766CC9 /* MockDeliveryLocalStorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeliveryLocalStorageHandler.swift; sourceTree = "<group>"; };
+		D2543643249F3B4600766CC9 /* MockDeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeliveryMasterPresenter.swift; sourceTree = "<group>"; };
 		D256548D249C8EDA00EB9A81 /* DeliveryStateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryStateHandler.swift; sourceTree = "<group>"; };
 		D27AA36E249B1C2500BF84C4 /* DeliveryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailViewController.swift; sourceTree = "<group>"; };
 		D27AA371249B1CC500BF84C4 /* DeliveryDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailProtocols.swift; sourceTree = "<group>"; };
@@ -105,7 +123,7 @@
 		D27AA37D249B737C00BF84C4 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
 		D288F2FB249A637A003EAAA3 /* DeliveryMasterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterProtocols.swift; sourceTree = "<group>"; };
 		D288F2FD249A6415003EAAA3 /* DeliveryMasterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterConfigurator.swift; sourceTree = "<group>"; };
-		D2ACD408249E303B009C31C8 /* MockDeliveryJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDeliveryJSON.json; sourceTree = "<group>"; };
+		D2ACD408249E303B009C31C8 /* MockDelivery.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDelivery.json; sourceTree = "<group>"; };
 		D2ACD414249E3BBD009C31C8 /* DeliveryDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailPresenterTests.swift; sourceTree = "<group>"; };
 		D2ACD416249E3C3A009C31C8 /* MockDeliveryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDeliveryDetailViewController.swift; sourceTree = "<group>"; };
 		D2E71BA8249DE81700E9216A /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +283,46 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
+		D254362E249F327D00766CC9 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				D254362F249F329900766CC9 /* Mocks */,
+				D2543630249F32B200766CC9 /* DeliveryMasterInteractorTests.swift */,
+				D2060164249F6C9500114B37 /* DeliveryMasterPresenterTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		D254362F249F329900766CC9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D2543641249F3B0B00766CC9 /* Data */,
+				D2543639249F345100766CC9 /* MockDeliveryAPIClient.swift */,
+				D254363C249F384A00766CC9 /* MockDeliveryLocalStorageHandler.swift */,
+				D2543643249F3B4600766CC9 /* MockDeliveryMasterPresenter.swift */,
+				D2060166249F6DD100114B37 /* MockDeliveryMasterRouter.swift */,
+				D2060169249F6FC900114B37 /* MockDeilveryMasterViewController.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		D2543641249F3B0B00766CC9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D2543635249F330E00766CC9 /* MockDeliveryList_offset_0.json */,
+				D2543637249F342A00766CC9 /* MockDeliveryList_offset_20.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D2543642249F3B1900766CC9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D2ACD408249E303B009C31C8 /* MockDelivery.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		D256548F249CA89F00EB9A81 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +375,7 @@
 				D24FB158249A74B700F149E0 /* DeliveryMasterInteractor.swift */,
 				D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */,
 				D204DBB1249A720C003F3CE6 /* DeliveryMasterRouter.swift */,
+				D254362E249F327D00766CC9 /* UnitTests */,
 				D24FB15A249A76CA00F149E0 /* SubViews */,
 			);
 			path = DeliveryMaster;
@@ -325,7 +384,7 @@
 		D2ACD407249E301C009C31C8 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				D2ACD408249E303B009C31C8 /* MockDeliveryJSON.json */,
+				D2543642249F3B1900766CC9 /* Data */,
 				D2ACD416249E3C3A009C31C8 /* MockDeliveryDetailViewController.swift */,
 			);
 			path = Mock;
@@ -447,7 +506,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2ACD413249E3431009C31C8 /* MockDeliveryJSON.json in Resources */,
+				D2543640249F386B00766CC9 /* MockDeliveryList_offset_20.json in Resources */,
+				D2ACD413249E3431009C31C8 /* MockDelivery.json in Resources */,
+				D254363F249F386700766CC9 /* MockDeliveryList_offset_0.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,9 +604,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D206016C249F70BD00114B37 /* DeliveryMasterPresenterTests.swift in Sources */,
+				D254363E249F386200766CC9 /* MockDeliveryLocalStorageHandler.swift in Sources */,
+				D2543633249F32BF00766CC9 /* DeliveryMasterInteractorTests.swift in Sources */,
 				D2ACD412249E3379009C31C8 /* DeliveryDetailInteractorTests.swift in Sources */,
 				D2ACD419249E3D76009C31C8 /* MockDeliveryDetailViewController.swift in Sources */,
+				D2060168249F6DD600114B37 /* MockDeliveryMasterRouter.swift in Sources */,
+				D254363B249F348600766CC9 /* MockDeliveryAPIClient.swift in Sources */,
+				D206016B249F6FCC00114B37 /* MockDeilveryMasterViewController.swift in Sources */,
 				D2ACD418249E3D4E009C31C8 /* DeliveryDetailPresenterTests.swift in Sources */,
+				D2543645249F3B5100766CC9 /* MockDeliveryMasterPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ enum DeliveryAPICallError {
 }
 
 protocol DeliveryAPIClientInterface {
-    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
+    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo,
                                    completion: @escaping ResponseJSONCallback)
     
     func fetchImageFromLink(imgUrl: String,
@@ -34,14 +34,11 @@ class DeliveryAPIClient {
 
 extension DeliveryAPIClient: DeliveryAPIClientInterface {
     
-    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo?,
+    func fetchDeliveriesFromServer(paging: DeliveryPagingInfo,
                                    completion: @escaping ResponseJSONCallback) {
         
-        let param: [String: Any]? = {
-            guard let paging = paging else { return nil }
-            return ["offset": paging.offset,
-                    "limit": paging.limit]
-        }()
+        let param = ["offset": paging.offset,
+                     "limit": paging.limit]
         
         AF.request(deliverAPI, parameters: param)
             .responseJSON(queue: .init(label: requestQueueHint), completionHandler: { res in
@@ -53,7 +50,7 @@ extension DeliveryAPIClient: DeliveryAPIClientInterface {
                             completion: @escaping ResponseImageCallback) {
         AF.request(imgUrl, method: .get)
             .responseImage(queue: .init(label: imageQueueHint), completionHandler: { res in
-            completion(res.result)
-        })
+                completion(res.result)
+            })
     }
 }

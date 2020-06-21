@@ -17,13 +17,16 @@ protocol DeliveryMasterViewControllerInterface: BaseViewControllerInterface {
 protocol DeliveryMasterInteractorInterface {
     func fetchDeliveries(onCompletion: @escaping () -> ())
     func getNumberOfDeliveries() -> Int
-    func getDelivery(at index: Int) -> Delivery
+    func getDelivery(at index: Int) -> Delivery?
 }
 
-protocol DeliveryMasterPresenterInterface: BasePresenterInterface {
-    func presentDeliveryDetails(index: Int)
+protocol DeliveryMasterInteractorOwnedPresenterInterface: class {
     func presentRetryFetchAlert()
     func reloadTableView()
+}
+
+protocol DeliveryMasterViewControllerOwnedPresenterInterface: BasePresenterInterface {
+    func presentDeliveryDetails(index: Int)
     func updateDeliveries()
 }
 

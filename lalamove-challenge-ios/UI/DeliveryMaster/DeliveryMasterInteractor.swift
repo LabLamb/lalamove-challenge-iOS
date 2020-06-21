@@ -19,11 +19,11 @@ class DeliveryMasterInteractor {
     fileprivate let retryImageFetchAsyncHint = "DeliveryImageFetchQueue"
     fileprivate let perPageLimit = 20
     
-    fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
-    fileprivate var apiClient: DeliveryAPIClientInterface?
-    fileprivate var localStorageHandler: DeliveryLocalStorageHandlerInterface?
+    var deliveryStatehandler: DeliveryStateHandlerInterface?
+    var apiClient: DeliveryAPIClientInterface?
+    var localStorageHandler: DeliveryLocalStorageHandlerInterface?
     
-    weak var presenter: DeliveryMasterPresenterInterface?
+    weak var presenter: DeliveryMasterInteractorOwnedPresenterInterface?
     
     init(apiClient: DeliveryAPIClientInterface = DeliveryAPIClient(),
          localStorageHandler: DeliveryLocalStorageHandlerInterface = DeliveryLocalStorageHandler(),
@@ -139,8 +139,12 @@ extension DeliveryMasterInteractor: DeliveryMasterInteractorInterface {
                                              completion: completionHandler)
     }
     
-    func getDelivery(at index: Int) -> Delivery {
-        return deliveries[index]
+    func getDelivery(at index: Int) -> Delivery? {
+        if index < 0 || index >= deliveries.count {
+            return nil
+        } else {
+            return deliveries[index]
+        }
     }
     
     func getNumberOfDeliveries() -> Int {

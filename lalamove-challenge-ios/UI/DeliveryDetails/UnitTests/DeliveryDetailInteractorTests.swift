@@ -12,33 +12,31 @@ import XCTest
 
 class DeliveryDetailInteractorTests: XCTestCase {
     
-    var delivery: Delivery!
-    var deliverStateHandler: DeliveryStateHandlerInterface!
     var interactor: DeliveryDetailInteractor!
     
     override func setUp() {
         super.setUp()
-        self.delivery = Delivery(sortingNumber: 0, json: loadDeliveryJSON())
-        self.deliverStateHandler = DeliveryStateHandler()
+        let delivery = Delivery(sortingNumber: 0, json: loadDeliveryJSON())
+        let deliveryStateHandler = DeliveryStateHandler()
         self.interactor = DeliveryDetailInteractor(delivery: delivery,
-                                                   deliveryStatehandler: deliverStateHandler)
+                                                   deliveryStatehandler: deliveryStateHandler)
     }
     
     fileprivate func loadDeliveryJSON() -> JSON {
         let bundle = Bundle(for: type(of: self))
-        let fileUrl = bundle.url(forResource: "MockDeliveryJSON", withExtension: "json")
+        let fileUrl = bundle.url(forResource: "MockDelivery", withExtension: "json")
         let data = try! Data(contentsOf: fileUrl!)
         let json = try! JSON(data: data)
         return json
     }
     
     func test_getIsFavorite_expect_true() {
-        delivery.isFavorite = true
+        interactor.delivery.isFavorite = true
         XCTAssertTrue(interactor.getIsFavorite())
     }
     
     func test_getIsFavorite_expect_false() {
-        delivery.isFavorite = false
+        interactor.delivery.isFavorite = false
         XCTAssertFalse(interactor.getIsFavorite())
     }
     
@@ -59,18 +57,20 @@ class DeliveryDetailInteractorTests: XCTestCase {
     }
     
     func test_toggleDeliveryIsFavorite_true() {
-        delivery.isFavorite = true
+        interactor.delivery.isFavorite = true
         let afterToggle = interactor.toggleDeliveryIsFavorite()
         XCTAssertEqual(afterToggle, false)
-        let deliveryIsFav = deliverStateHandler?.readFavoritesStatus(ids: [delivery.id])[delivery.id]
+        let id = interactor.delivery.id
+        let deliveryIsFav = interactor.deliveryStatehandler?.readFavoritesStatus(ids: [id])[id]
         XCTAssertEqual(deliveryIsFav, false)
     }
     
     func test_toggleDeliveryIsFavorite_false() {
-        delivery.isFavorite = false
+        interactor.delivery.isFavorite = false
         let afterToggle = interactor.toggleDeliveryIsFavorite()
         XCTAssertEqual(afterToggle, true)
-        let deliveryIsFav = deliverStateHandler?.readFavoritesStatus(ids: [delivery.id])[delivery.id]
+        let id = interactor.delivery.id
+        let deliveryIsFav = interactor.deliveryStatehandler?.readFavoritesStatus(ids: [id])[id]
         XCTAssertEqual(deliveryIsFav, true)
     }
     

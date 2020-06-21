@@ -25,8 +25,8 @@ class UITests: XCTestCase {
     
     func testInitialLoad() {
         let exists = NSPredicate(format: "count >= 20")
-        expectation(for: exists, evaluatedWith: app.cells, handler: nil)
-        waitForExpectations(timeout: 10, handler: nil)
+        expectation(for: exists, evaluatedWith: app.cells)
+        waitForExpectations(timeout: 10)
     }
     
     func testLoadMoreData() {
@@ -39,8 +39,8 @@ class UITests: XCTestCase {
         testIndicatorExists()
         
         let exists = NSPredicate(format: "count >= 40")
-        expectation(for: exists, evaluatedWith: app.cells, handler: nil)
-        waitForExpectations(timeout: 10, handler: nil)
+        expectation(for: exists, evaluatedWith: app.cells)
+        waitForExpectations(timeout: 10)
     }
     
     func testEnterDetailPage() {

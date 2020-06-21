@@ -12,7 +12,7 @@ class DeliveryMasterViewController: UIViewController {
     
     fileprivate let navTitle = "My Deliveries"
     fileprivate var isLoading = true
-    var presenter: DeliveryMasterPresenterInterface?
+    var presenter: DeliveryMasterViewControllerOwnedPresenterInterface?
     weak var tableView: UITableView?
     
     override func viewDidLoad() {

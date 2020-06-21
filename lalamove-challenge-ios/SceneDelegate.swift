@@ -13,15 +13,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow()
-        window?.windowScene = windowScene
-        window?.makeKeyAndVisible()
-        
-        let deliverMasterVC = DeliveryMasterConfigurator().configViewController()
-        
-        window?.rootViewController = UINavigationController(rootViewController: deliverMasterVC)
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil { // Run app normally
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            
+            window = UIWindow()
+            window?.windowScene = windowScene
+            window?.makeKeyAndVisible()
+            
+            let deliverMasterVC = DeliveryMasterConfigurator().configViewController()
+            
+            window?.rootViewController = UINavigationController(rootViewController: deliverMasterVC)
+        }
     }
 }
 

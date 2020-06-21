@@ -29,36 +29,20 @@ class DeliveryMasterPresenter: NSObject {
     
 }
 
-extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
+extension DeliveryMasterPresenter: DeliveryMasterViewControllerOwnedPresenterInterface {
     func setupView() {
         presentTableView()
         presentNavigationTitle()
         updateDeliveries()
     }
     
-    func presentRetryFetchAlert() {
-        let alert = UIAlertController(title: "Error", message: "Fail to fetch data", preferredStyle: .alert)
-        let tryAgainBtn = UIAlertAction(title: "Try again", style: .default, handler: { [weak self] alertBtn in
-            guard let self = self else { return }
-            self.updateDeliveries()
-            self.viewController?.toggleRequestAnimation(animate: true)
-        })
-        let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(tryAgainBtn)
-        alert.addAction(cancelBtn)
-        router?.routeToRetryFetchAlert(viewController: alert)
-    }
-    
     func presentDeliveryDetails(index: Int) {
-        guard let interactor = self.interactor else { return }
-        let delivery = interactor.getDelivery(at: index)
+        guard let interactor = self.interactor,
+            let delivery = interactor.getDelivery(at: index) else { return }
+        
         let configurator = DeliveryDetailConfigurator(deilvery: delivery)
         let deliveryDetVC = configurator.configViewController()
         router?.routeToDetailPage(viewController: deliveryDetVC)
-    }
-    
-    func reloadTableView() {
-        viewController?.reloadTableView()
     }
     
     func updateDeliveries() {
@@ -66,6 +50,25 @@ extension DeliveryMasterPresenter: DeliveryMasterPresenterInterface {
             guard let self = self else { return }
             self.viewController?.toggleRequestAnimation(animate: false)
         })
+    }
+    
+    func tryAgainButtonHandler(alertBtn: UIAlertAction) {
+        self.viewController?.toggleRequestAnimation(animate: true)
+        self.updateDeliveries()
+    }
+}
+
+extension DeliveryMasterPresenter: DeliveryMasterInteractorOwnedPresenterInterface {
+    func presentRetryFetchAlert() {
+        let alert = UIAlertController(title: "Error", message: "Fail to fetch data", preferredStyle: .alert)
+        let tryAgainBtn = UIAlertAction(title: "Try again", style: .default, handler: tryAgainButtonHandler)
+        let cancelBtn = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(tryAgainBtn)
+        alert.addAction(cancelBtn)
+        router?.routeToRetryFetchAlert(viewController: alert)
+    }
+    func reloadTableView() {
+        viewController?.reloadTableView()
     }
 }
 
@@ -78,12 +81,12 @@ extension DeliveryMasterPresenter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryMasterCell.cellIdentifier, for: indexPath) as? DeliveryMasterCell,
-            let interactor = self.interactor
+            let interactor = self.interactor,
+            let delivery = interactor.getDelivery(at: indexPath.row)
             else {
                 return UITableViewCell()
         }
         
-        let delivery = interactor.getDelivery(at: indexPath.row)
         cell.configData(summary: delivery)
         
         return cell

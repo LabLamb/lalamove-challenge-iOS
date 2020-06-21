@@ -10,9 +10,8 @@ import UIKit.UIImage
 
 class DeliveryDetailInteractor {
     
-    private var delivery: Delivery
-    
-    fileprivate var deliveryStatehandler: DeliveryStateHandlerInterface?
+    var delivery: Delivery
+    var deliveryStatehandler: DeliveryStateHandlerInterface?
     
     init(delivery: Delivery,
         deliveryStatehandler: DeliveryStateHandlerInterface = DeliveryStateHandler()) {

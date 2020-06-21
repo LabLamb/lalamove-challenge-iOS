@@ -12,8 +12,6 @@ import XCTest
 
 class DeliveryDetailPresenterTests: XCTestCase {
     
-    var delivery: Delivery!
-    var deliverStateHandler: DeliveryStateHandlerInterface!
     var interactor: DeliveryDetailInteractor!
     
     var viewController: MockDeliveryDetailViewController!
@@ -21,10 +19,8 @@ class DeliveryDetailPresenterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        self.delivery = Delivery(sortingNumber: 0, json: loadDeliveryJSON())
-        self.deliverStateHandler = DeliveryStateHandler()
-        self.interactor = DeliveryDetailInteractor(delivery: delivery,
-                                                   deliveryStatehandler: deliverStateHandler)
+        let delivery = Delivery(sortingNumber: 0, json: loadDeliveryJSON())
+        self.interactor = DeliveryDetailInteractor(delivery: delivery)
         self.viewController = MockDeliveryDetailViewController()
         self.presenter = DeliveryDetailPresenter()
         presenter.viewController = viewController
@@ -33,32 +29,14 @@ class DeliveryDetailPresenterTests: XCTestCase {
     
     fileprivate func loadDeliveryJSON() -> JSON {
         let bundle = Bundle(for: type(of: self))
-        let fileUrl = bundle.url(forResource: "MockDeliveryJSON", withExtension: "json")
+        let fileUrl = bundle.url(forResource: "MockDelivery", withExtension: "json")
         let data = try! Data(contentsOf: fileUrl!)
         let json = try! JSON(data: data)
         return json
     }
     
-    func test_presentFavoriteButton_addFavoriteBtnText() {
-        delivery.isFavorite = false
-        presenter.presentFavoriteButton()
-        XCTAssertEqual(presenter.addFavoriteBtnText, viewController.favButtonTitle)
-    }
-    
-    func test_presentFavoriteButton_removeFavoriteBtnText() {
-        delivery.isFavorite = true
-        presenter.presentFavoriteButton()
-        XCTAssertEqual(presenter.removeFavoriteBtnText, viewController.favButtonTitle)
-    }
-    
-    func test_presentInfoView() {
-        XCTAssertFalse(viewController.infoViewHasSetup)
-        presenter.presentInfoView()
-        XCTAssertTrue(viewController.infoViewHasSetup)
-    }
-    
     func test_favBtnTapped() {
-        delivery.isFavorite = true
+        interactor.delivery.isFavorite = true
         presenter.favBtnTapped()
         XCTAssertEqual(presenter.addFavoriteBtnText, viewController.favButtonTitle)
     }
@@ -70,7 +48,7 @@ class DeliveryDetailPresenterTests: XCTestCase {
     }
     
     func test_setupView() {
-        delivery.isFavorite = false
+        interactor.delivery.isFavorite = false
         XCTAssertFalse(viewController.infoViewHasSetup)
         presenter.setupView()
         XCTAssertTrue(viewController.infoViewHasSetup)
@@ -83,5 +61,4 @@ class DeliveryDetailPresenterTests: XCTestCase {
         presenter.removeCADisplayLink()
         XCTAssertNil(presenter.displayLink)
     }
-    
 }

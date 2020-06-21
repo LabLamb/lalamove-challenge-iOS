@@ -14,8 +14,9 @@ protocol DeliveryLocalStorageHandlerInterface {
     func fetchDeliveriesFromLocal(batch: Int) -> [Delivery]
 }
 
-class DeliveryLocalStorageHandler: DeliveryLocalStorageHandlerInterface {
-    
+class DeliveryLocalStorageHandler {
+    private let storeDeliveriesAsyncQueueHint = "DeliveryLocalStoringQueue"
+    private let updatImageAsyncQueueHint = "ImageUpdateLocalStoringQueue"
     private let jsonStorageFolder = "lalamove-challange-folder"
     private let jsonExtension = "json"
     
@@ -25,34 +26,43 @@ class DeliveryLocalStorageHandler: DeliveryLocalStorageHandlerInterface {
         return docDirURL?.appendingPathComponent(jsonStorageFolder)
     }
     
+    fileprivate func getFileURL(folderURL: URL, batch: String, id: String, ext: String) -> URL {
+        return folderURL.appendingPathComponent(batch).appendingPathComponent(id).appendingPathExtension(ext)
+    }
+}
+
+extension DeliveryLocalStorageHandler: DeliveryLocalStorageHandlerInterface {
+    
     func storeDeliveriesJSON(batch: Int, deliveries: [Delivery]) {
-        guard let folderURL = folderURL else { return }
-        folderURL.createFolderIfNeeded()
-        let batchFolderURL = folderURL.appendingPathComponent(String(batch))
-        batchFolderURL.createFolderIfNeeded()
-        
-        for delivery in deliveries {
-            let fileURL = getFileURL(folderURL: folderURL, batch: String(batch), id: delivery.id, ext: jsonExtension)
-            fileURL.encodeAndWriteToFile(delivery: delivery)
+        DispatchQueue(label: storeDeliveriesAsyncQueueHint).async { [weak self] in
+            guard let self = self,
+                let folderURL = self.folderURL else { return }
+            folderURL.createFolderIfNeeded()
+            let batchFolderURL = folderURL.appendingPathComponent(String(batch))
+            batchFolderURL.createFolderIfNeeded()
+            
+            for delivery in deliveries {
+                let fileURL = self.getFileURL(folderURL: folderURL, batch: String(batch), id: delivery.id, ext: self.jsonExtension)
+                fileURL.encodeAndWriteToFile(delivery: delivery)
+            }
         }
     }
     
     func updateImageData(with id: String, batch: Int, imageData: Data) {
-        guard let folderURL = folderURL else { return }
-        folderURL.createFolderIfNeeded()
-        let batchFolderURL = folderURL.appendingPathComponent(String(batch))
-        batchFolderURL.createFolderIfNeeded()
-        
-        let fileURL = getFileURL(folderURL: folderURL, batch: String(batch), id: id, ext: jsonExtension)
-        if let data = try? Data(contentsOf: fileURL),
-            let delivery = try? JSONDecoder().decode(Delivery.self, from: data) {
-            delivery.goodsPicData = imageData.base64EncodedString()
-            fileURL.encodeAndWriteToFile(delivery: delivery)
+        DispatchQueue(label: updatImageAsyncQueueHint).async { [weak self] in
+            guard let self = self,
+                let folderURL = self.folderURL else { return }
+            folderURL.createFolderIfNeeded()
+            let batchFolderURL = folderURL.appendingPathComponent(String(batch))
+            batchFolderURL.createFolderIfNeeded()
+            
+            let fileURL = self.getFileURL(folderURL: folderURL, batch: String(batch), id: id, ext: self.jsonExtension)
+            if let data = try? Data(contentsOf: fileURL),
+                let delivery = try? JSONDecoder().decode(Delivery.self, from: data) {
+                delivery.goodsPicData = imageData.base64EncodedString()
+                fileURL.encodeAndWriteToFile(delivery: delivery)
+            }
         }
-    }
-    
-    fileprivate func getFileURL(folderURL: URL, batch: String, id: String, ext: String) -> URL {
-        return folderURL.appendingPathComponent(batch).appendingPathComponent(id).appendingPathExtension(ext)
     }
     
     func fetchDeliveriesFromLocal(batch: Int) -> [Delivery] {
@@ -86,7 +96,7 @@ fileprivate extension URL {
     
     func createFolderIfNeeded() {
         if !FileManager.default.fileExists(atPath: self.path) {
-            try? FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true, attributes: nil)
+            try? FileManager.default.createDirectory(atPath: self.path, withIntermediateDirectories: true)
         }
     }
 }
