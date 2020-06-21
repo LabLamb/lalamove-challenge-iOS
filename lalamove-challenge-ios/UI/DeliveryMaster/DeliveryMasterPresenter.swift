@@ -14,6 +14,8 @@ class DeliveryMasterPresenter: NSObject {
     weak var viewController: DeliveryMasterViewControllerInterface?
     var router: DeliveryMasterRouterInterface?
     
+    // MARK: - Helper functions
+    
     func presentNavigationTitle() {
         viewController?.setupNavigationBarTitle()
     }

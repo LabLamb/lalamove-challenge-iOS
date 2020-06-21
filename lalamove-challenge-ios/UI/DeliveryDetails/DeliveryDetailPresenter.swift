@@ -22,6 +22,8 @@ class DeliveryDetailPresenter {
         displayLink?.add(to: .main, forMode: .default)
     }
     
+    // MARK: - Helper functions
+    
     func presentFavoriteButton() {
         guard let interactor = interactor else { return }
         let btn = UIButton()

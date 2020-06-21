@@ -11,7 +11,7 @@ target 'lalamove-challenge-ios' do
     inherit! :search_paths
   end
 
-  target 'Unit Test' do
+  target 'UnitTest' do
     inherit! :search_paths
   end
 

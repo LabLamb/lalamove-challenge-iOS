@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70580349E4328EABCA4D908D /* libPods-Unit Test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C703B7B44DB8CC02F7A065 /* libPods-Unit Test.a */; };
+		344E226A175E0BE54C79E5E2 /* libPods-UnitTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6CB77EB32B3E29C2A472A3 /* libPods-UnitTest.a */; };
 		7B5D3453FBCFE0C56982A85E /* libPods-UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59119242BDB90F34D3F843D1 /* libPods-UITests.a */; };
 		B3F193EEED49C5CE992411A3 /* libPods-lalamove-challenge-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */; };
 		D204DBA6249A66DE003F3CE6 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204DBA5249A66DE003F3CE6 /* Delivery.swift */; };
@@ -64,12 +64,14 @@
 /* Begin PBXFileReference section */
 		1632851C6445DEEDCAA5193A /* Pods-Unit Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unit Test.release.xcconfig"; path = "Target Support Files/Pods-Unit Test/Pods-Unit Test.release.xcconfig"; sourceTree = "<group>"; };
 		21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lalamove-challenge-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F6CB77EB32B3E29C2A472A3 /* libPods-UnitTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UnitTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		383F957D1FBB452BE728376D /* Pods-Unit Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unit Test.debug.xcconfig"; path = "Target Support Files/Pods-Unit Test/Pods-Unit Test.debug.xcconfig"; sourceTree = "<group>"; };
 		41D2A2ADE55F5B6DEB242FED /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		41FBF92F9A945A62035F0F4B /* Pods-lalamove-challenge-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.release.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.release.xcconfig"; sourceTree = "<group>"; };
-		48C703B7B44DB8CC02F7A065 /* libPods-Unit Test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Unit Test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A1F0EE34B2E1288817F590 /* Pods-lalamove-challenge-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lalamove-challenge-ios.debug.xcconfig"; path = "Target Support Files/Pods-lalamove-challenge-ios/Pods-lalamove-challenge-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		59119242BDB90F34D3F843D1 /* libPods-UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72FB582A9747FB16C096AF57 /* Pods-UnitTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTest.debug.xcconfig"; path = "Target Support Files/Pods-UnitTest/Pods-UnitTest.debug.xcconfig"; sourceTree = "<group>"; };
+		C549194209CFEB2905C7415C /* Pods-UnitTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTest.release.xcconfig"; path = "Target Support Files/Pods-UnitTest/Pods-UnitTest.release.xcconfig"; sourceTree = "<group>"; };
 		C92D1C9AC9641247534B841C /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		D204DBA5249A66DE003F3CE6 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		D204DBAC249A709A003F3CE6 /* DeliveryMasterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryMasterPresenter.swift; sourceTree = "<group>"; };
@@ -116,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70580349E4328EABCA4D908D /* libPods-Unit Test.a in Frameworks */,
+				344E226A175E0BE54C79E5E2 /* libPods-UnitTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +150,8 @@
 				C92D1C9AC9641247534B841C /* Pods-UITests.release.xcconfig */,
 				383F957D1FBB452BE728376D /* Pods-Unit Test.debug.xcconfig */,
 				1632851C6445DEEDCAA5193A /* Pods-Unit Test.release.xcconfig */,
+				72FB582A9747FB16C096AF57 /* Pods-UnitTest.debug.xcconfig */,
+				C549194209CFEB2905C7415C /* Pods-UnitTest.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -157,7 +161,7 @@
 			children = (
 				21FBB9C1BBEFCEDBB442803E /* libPods-lalamove-challenge-ios.a */,
 				59119242BDB90F34D3F843D1 /* libPods-UITests.a */,
-				48C703B7B44DB8CC02F7A065 /* libPods-Unit Test.a */,
+				2F6CB77EB32B3E29C2A472A3 /* libPods-UnitTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -178,12 +182,12 @@
 			path = APIClient;
 			sourceTree = "<group>";
 		};
-		D24532F6249E2E6800E62F24 /* Unit Test */ = {
+		D24532F6249E2E6800E62F24 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
 				D24532F9249E2E6800E62F24 /* Info.plist */,
 			);
-			path = "Unit Test";
+			path = UnitTest;
 			sourceTree = "<group>";
 		};
 		D24532FF249E2E7E00E62F24 /* UnitTests */ = {
@@ -200,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				D24A6D06249A61E1008F0C44 /* lalamove-challenge-ios */,
-				D24532F6249E2E6800E62F24 /* Unit Test */,
+				D24532F6249E2E6800E62F24 /* UnitTest */,
 				D2E71BA9249DE81700E9216A /* UITests */,
 				D24A6D05249A61E1008F0C44 /* Products */,
 				548C880990F634509CCB5799 /* Pods */,
@@ -481,7 +485,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Unit Test-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-UnitTest-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -614,11 +618,11 @@
 /* Begin XCBuildConfiguration section */
 		D24532FC249E2E6800E62F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 383F957D1FBB452BE728376D /* Pods-Unit Test.debug.xcconfig */;
+			baseConfigurationReference = 72FB582A9747FB16C096AF57 /* Pods-UnitTest.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Unit Test/Info.plist";
+				INFOPLIST_FILE = UnitTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,11 +638,11 @@
 		};
 		D24532FD249E2E6800E62F24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1632851C6445DEEDCAA5193A /* Pods-Unit Test.release.xcconfig */;
+			baseConfigurationReference = C549194209CFEB2905C7415C /* Pods-UnitTest.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Unit Test/Info.plist";
+				INFOPLIST_FILE = UnitTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
